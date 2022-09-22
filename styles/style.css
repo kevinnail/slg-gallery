@@ -1,0 +1,22 @@
+.search {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.beanie-baby {
+    background-color: rgb(8, 123, 255);
+    border: 2px solid black;
+
+    height: 200px;
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+
+.beanie-baby img {
+    height: 175px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
