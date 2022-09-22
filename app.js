@@ -24,8 +24,8 @@ window.addEventListener('load', async () => {
     }
 });
 
-async function findBeanies(name, astroSign) {
-    const response = await getBeanies();
+async function findBeanies(title, astroSign) {
+    const response = await getBeanies(title, astroSign);
 
     error = response.error;
     beanies = response.data;
@@ -34,6 +34,14 @@ async function findBeanies(name, astroSign) {
         displayBeanies();
     }
 }
+
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(searchForm);
+    const title = formData.get('name');
+    const astroSign = formData.get('astroSign');
+    findBeanies(title, astroSign);
+});
 
 /* Display Functions */
 
