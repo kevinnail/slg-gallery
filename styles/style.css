@@ -1,6 +1,17 @@
+.container {
+    display: grid;
+    grid-template-rows: 200px;
+    /* grid-template-columns: 1fr 1fr; */
+}
+
 .search {
     display: grid;
     grid-template-columns: 1fr;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .beanie-baby {

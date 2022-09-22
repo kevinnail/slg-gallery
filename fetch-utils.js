@@ -10,6 +10,12 @@ export async function getBeanies() {
     let query = client.from('beanie_babies').select('*').order('title').limit(100);
 
     const response = await query;
+    return response;
+}
+
+export async function getAstroSigns() {
+    let query = client.from('beanie_baby_astro_signs').select('*').order('name');
+    const response = await query;
     console.log(response);
     return response;
 }
