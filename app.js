@@ -1,5 +1,5 @@
 /* Imports */
-// import { getBeanies, getAstrosigns } from './fetch-utils.js';
+import { getBeanies } from './fetch-utils.js';
 import { renderAstrosignOption, renderBeanie } from './render-utils.js';
 
 /* Get DOM Elements */
@@ -9,11 +9,33 @@ const astrosignSelect = document.getElementById('astro-sign-select');
 const beanieList = document.getElementById('beanie-list');
 
 /* State */
-
+let error = null;
+let beanies = [];
 /* Events */
+
+window.addEventListener('load', async () => {
+    findBeanies();
+});
+
+async function findBeanies(name, astroSign) {
+    const response = await getBeanies();
+
+    error = response.error;
+    beanies = response.data;
+
+    if (!error) {
+        displayBeanies();
+    }
+}
 
 /* Display Functions */
 
+function displayBeanies() {
+    beanieList.innerHTML = '';
+    for (const beanie of beanies) {
+        const beanieEl = renderBeanie(beanie);
+        beanieList.append(beanieEl);
+    }
+}
+
 // (don't forget to call any display functions you want to run on page load!)
-const x = renderBeanie('sdf');
-beanieList.append(x);
