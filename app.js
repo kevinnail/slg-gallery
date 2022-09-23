@@ -12,6 +12,7 @@ const beanieList = document.getElementById('beanie-list');
 let error = null;
 let beanies = [];
 let astroSigns = [];
+let count = 0;
 /* Events */
 
 window.addEventListener('load', async () => {
@@ -29,7 +30,8 @@ async function findBeanies(title, astroSign) {
 
     error = response.error;
     beanies = response.data;
-
+    count = response.count;
+    displayNotifications();
     if (!error) {
         displayBeanies();
     }
@@ -57,6 +59,16 @@ function displayAstrosignOptions() {
     for (const astroSign of astroSigns) {
         const option = renderAstrosignOption(astroSign);
         astrosignSelect.append(option);
+    }
+}
+
+function displayNotifications() {
+    if (error) {
+        notificationDisplay.classList.add('error');
+        notificationDisplay.textContent = error.message;
+    } else {
+        notificationDisplay.classList.remove('error');
+        notificationDisplay.textContent = `Showing ${beanies.length} of ${count} beanies.`;
     }
 }
 
