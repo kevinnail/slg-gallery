@@ -26,11 +26,22 @@ export async function getPosts(title, category) {
     }
 
     const response = await query;
-    console.log('response', response);
 
     return response;
 }
+export async function getPost(id) {
+    return await client
+        .from('posts')
+        .select(`*,comments(*)`)
+        .eq('id', id)
+        .order('created_at', { foreignTable: 'comments', ascending: false })
+        .single();
+}
 
+export async function getUrls(id) {
+    const response = await client.from('post-id-img').select('*').eq('post_id', id);
+    return response;
+}
 // export async function getCategory() {
 // let query = client.from('post').select('category').order('name');
 // const response = await query;

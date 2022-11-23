@@ -1,0 +1,218 @@
+main {
+    display: grid;
+    grid-template-rows: auto 2px auto 1fr;
+    gap: 10px;
+}
+
+.post-summary {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: 30px 60px;
+    grid-template-areas:
+        'image name'
+        'image bio';
+    row-gap: 5px;
+    column-gap: 20px;
+    background: var(--offset-color);
+    box-shadow: var(--box-shadow);
+}
+
+#post-name {
+    grid-area: name;
+    margin: 0;
+    align-self: center;
+}
+
+#post-image {
+    grid-area: image;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#post-bio {
+    grid-area: bio;
+    margin: 0;
+}
+
+#add-comment-form {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    align-items: end;
+    box-sizing: border-box;
+    width: 70%;
+    margin: 0px auto 0px auto;
+}
+
+#add-comment-form input {
+    height: 45px;
+}
+
+#comment-list li {
+    background: rgb(255, 255, 255);
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 43, 100, 1),
+        rgba(0, 43, 100, 0.5),
+        rgba(0, 43, 100, 0.5)
+    );
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--placeholder-color);
+    margin: 10px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 70%;
+    margin: 10px auto 10px auto;
+    box-shadow: 0px 0px 10px 0px white;
+}
+
+.single-post {
+    display: grid;
+    grid-template-columns: 30% 55% 1fr;
+}
+.post-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 0;
+    border: 1px solid black;
+    padding: 40px;
+    background-image: linear-gradient(black, white, white, black);
+    border-top: 1px solid rgb(132, 132, 132);
+    border-right: 1px solid rgb(45, 45, 45);
+    border-bottom: 1px solid rgb(45, 45, 45);
+    border-left: 1px solid rgb(132, 132, 132);
+    box-shadow: 2px 2px 20px 0px white;
+}
+.image-size {
+    border: 2px solid black;
+    cursor: pointer;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-center {
+    margin: 0px auto 0px auto;
+}
+
+.description {
+    color: white;
+    background-color: rgba(0, 43, 100, 1);
+    border: 1px solid black;
+    padding: 5px 10px 5px 10px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px white;
+    text-align: left;
+    width: 80%;
+    min-width: 100px;
+}
+
+.delete-cmt-btn {
+    display: inline-block;
+    grid-column-start: 5;
+    border-radius: 10px;
+    height: 30px;
+    width: 80%;
+    margin: auto;
+}
+
+.delete-cmt-btn:hover {
+    transform: scale(1.01);
+    transition: 150ms;
+    background-color: red;
+    color: white;
+    box-shadow: 0px 0px 15px 0px white;
+}
+.delete-cmt-btn:active {
+    transform: scale(0.95);
+    transition: 150ms;
+}
+
+.flex-comment {
+    display: grid;
+    /* grid-template-columns: 9fr 1fr; */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.comment-sig {
+    font-size: 0.75em;
+    grid-column-start: 4;
+    grid-column-end: 6;
+}
+
+.joy-btn {
+    grid-column-start: 4;
+    height: 30px;
+    display: inline-block;
+    border-radius: 10px;
+    height: 30px;
+    width: 80%;
+    margin: auto;
+}
+.joy-cmt-joyBtn {
+    background-color: rgb(0, 153, 255);
+    border: 2px solid white;
+}
+.comment-span {
+    display: inline-block;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.date-span {
+    display: block;
+    font-size: 0.9rem;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-shadow: 0px 0px 5px white;
+    display: inline-block;
+}
+
+#category:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transition: 500ms;
+}
+
+.post-delete-button {
+    width: 70px;
+    margin: auto;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid black;
+    background-color: rgb(200, 200, 200);
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.post-delete-button:hover {
+    color: white;
+    box-shadow: 0px 0px 10px 0px white;
+    cursor: pointer;
+    transition: 250ms;
+    background-color: red;
+}
+.post-delete-button:active {
+    transform: scale(0.95);
+}
+.hide {
+    display: none;
+}
+
+.post-gallery-pics {
+    width: 100%;
+    box-shadow: 2px 2px 15px 5px rgb(0, 0, 0);
+    border-radius: 10px;
+    margin-bottom: 2.5%;
+    transition: 550ms;
+}
+.post-gallery-pics:hover {
+    box-shadow: 2px 2px 30px 5px rgb(0, 0, 0);
+    border-radius: 10px;
+    transform: scale(1.5);
+    transition: 550ms;
+}
