@@ -37,10 +37,11 @@ export async function getPosts(title, category) {
     //     .order('title')
     //     .limit(100);
 
-    let query = client.from('posts').select('*');
-    // , { count: 'exact' })
-    // .limit(200)
-    // .order('created_at', { ascending: false });
+    let query = client
+        .from('posts')
+        .select('*', { count: 'exact' })
+        .limit(200)
+        .order('created_at', { ascending: false });
 
     if (title) {
         query = query.ilike('title', `%${title}%`);
@@ -71,3 +72,40 @@ export async function getUrls(id) {
 // const response = await query;
 // return response;
 // }
+export async function createPost(post) {
+    return await client.from('posts').insert(post).single();
+}
+export async function uploadImage(bucketName, imagePath, imageFile) {
+    const bucket = client.storage.from(bucketName);
+    let url = null;
+    const response = await bucket.upload(imagePath, imageFile, {
+        cacheControl: '3600',
+        // in this case, we will _replace_ any
+        // existing file with same name.
+        upsert: true,
+    });
+
+    if (response.error) {
+        return null;
+    }
+
+    // Construct the URL to this image:
+    url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+
+    return url;
+}
+export async function uploadImage2(urls, postId) {
+    // console.log('postId', postId);
+    for (let i = 0; i < urls.length; i++) {
+        // console.log('urls[i] : ', urls[i]);
+
+        let obj = {
+            post_id: postId,
+            image_url: urls[i],
+        };
+
+        // const tryThis = await client.from('post-id-img').insert(obj);
+        await client.from('post-id-img').insert(obj);
+        // console.log('tryThis.error', tryThis.error);
+    }
+}
