@@ -51,6 +51,9 @@ function displayPosts() {
     postList.innerHTML = '';
     for (const post of posts) {
         const postEl = renderPost(post);
+        postEl.addEventListener('click', () => {
+            location.assign(`/post/?id=${post.id}`);
+        });
         postList.append(postEl);
     }
 }

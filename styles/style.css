@@ -22,6 +22,7 @@
     border-radius: 10px;
     transform: scale(1.01);
     transition: 250ms;
+    cursor: pointer;
 }
 #post-list li a:hover {
     box-shadow: 2px 2px 30px 5px white;

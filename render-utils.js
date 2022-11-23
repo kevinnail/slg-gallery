@@ -44,8 +44,8 @@ export function renderCategoryOption(astroSign) {
 export function renderPost(post) {
     const li = document.createElement('li');
 
-    const a = document.createElement('a');
-    a.href = `/post/?id=${post.id}`;
+    // const a = document.createElement('a');
+    // a.href = `/post/?id=${post.id}`;
 
     const h3 = document.createElement('h3');
     h3.textContent = post.title;
@@ -72,8 +72,9 @@ export function renderPost(post) {
     // p3.classList.add('posted-by');
     // add "time" column to posts table, access/ display here
 
-    a.append(h3, h32, img, p, p2);
-    li.append(a);
+    // a.append(h3, h32, img, p, p2);
+    // li.append(a);
+    li.append(h3, h32, img, p, p2);
     return li;
 }
 
