@@ -7,53 +7,61 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
         <!-- title and favicon -->
-        <title>Search Supabase</title>
-        <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
+        <title>Glass It Up</title>
+        <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
 
         <!-- js -->
-        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
+        ></script>
+
         <script type="module" src="app.js"></script>
 
         <!-- fonts -->
-        <!-- see https://fonts.google.com/ -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
+        />
 
         <!-- css -->
-        <link rel="stylesheet" href="styles/reset.css" />
-        <link rel="stylesheet" href="styles/global.css" />
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="/styles/style.css" />
         <!-- add link for page specific css -->
-        <link rel="stylesheet" href="styles/style.css" />
     </head>
 
     <body>
-        <!-- <header>
-            <img class="logo" src="assets/html_css_js.png" alt="logo" />
-            <h1>Web App</h1>
-        </header> -->
+        <header class="page-header">
+            <a id="logo-link" href="/"
+                ><img class="logo" width="50px" src="/assets/sherlock.jpeg" alt="logo" />
+                <p class="title">Glass It Up</p></a
+            >
+            <form id="search-form" style="display: flex">
+                <input id="search-input" name="title" placeholder="search by title" />
+                <select id="category-select" name="category">
+                    <option value="">choose category</option>
+                    <option value="Dry-pieces">Dry Pieces</option>
+                    <option value="Bubblers">Bubblers</option>
+                    <option value="Recyclers">Recyclers</option>
+                    <option value="Slides">Slides</option>
+                    <option value="Marbles">Marbles</option>
+                    <option value="Goblets">Goblets</option>
+                    <option value="Misc">Misc</option>
+                </select>
+                <button id="search-button">🔍</button>
+            </form>
+
+            <nav>
+                <a href="/post-editor">contact</a>
+            </nav>
+        </header>
 
         <main>
-            <section class="search">
-                <form id="search-form">
-                    <input name="name" placeholder="name" id="name-input" />
-                    <select name="astroSign" id="astro-sign-select">
-                        <option value="">All astro signs</option>
-                    </select>
-                    <!-- stretch goals: -->
-
-                    <select name="animal" id="animal-select">
-                        <option value="">Animal</option>
-                    </select>
-                    <select name="theme" id="theme-select">
-                        <option value="">Theme</option>
-                    </select>
-                    <button id="button">Search</button>
-                </form>
-
-                <p id="notification-display">Count</p>
-            </section>
-
-            <div class="container">
-                <ul class="list" id="beanie-list"></ul>
-            </div>
+            <p id="error-display" class="error"></p>
+            <ul id="post-list"></ul>
         </main>
     </body>
 </html>
