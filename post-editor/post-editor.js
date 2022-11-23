@@ -47,7 +47,6 @@ postForm.addEventListener('submit', async (e) => {
     const formData = new FormData(postForm);
     let imageFile = [];
     imageFile = formData.getAll('image');
-    console.log('fimagasefe', imageFile);
 
     // works vvvvvvvvvvvvvvvvvvvvvvvvv
 
@@ -75,12 +74,11 @@ postForm.addEventListener('submit', async (e) => {
         const randomFolder = Math.floor(Date.now() * Math.random());
         // const imagePath = `reddit-clone/${randomFolder}/${imageFile[0].name}`;
         imagePath.push('current/' + randomFolder + '/' + imageFile[i].name);
-        console.log('imagePath', imageFile[i].name);
 
         url = await uploadImage('stress-less-glass', imagePath[i], imageFile[i]);
 
         urls.push(url);
-        // console.log('url: ', url);
+        // console.log('urls: ', urls);
     }
 
     // const time = getDateStamp();
@@ -113,6 +111,7 @@ postForm.addEventListener('submit', async (e) => {
 
     // console.log('response.data from createPost', response.data);
     // console.log('urls: ', urls);
+    // console.log('urls: ' + urls + ' ' + 'response.data.id: ' + response.data.id);
 
     await uploadImage2(urls, response.data.id);
     // need another function to input data into the post-id-image table => post_id/ post(id)

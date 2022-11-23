@@ -66,7 +66,6 @@ export async function getPost(id) {
 
 export async function getUrls(id) {
     const response = await client.from('post-id-img').select('*').eq('post_id', id);
-    console.log('response from getUrls', response);
 
     return response;
 }
@@ -76,8 +75,6 @@ export async function getUrls(id) {
 // return response;
 // }
 export async function createPost(post) {
-    console.log('post from createPost', post);
-
     return await client.from('posts').insert(post).single();
 }
 
@@ -90,7 +87,6 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
         // existing file with same name.
         upsert: true,
     });
-    console.log('response.error', response.error);
 
     if (response.error) {
         return null;
@@ -98,12 +94,10 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
 
     // Construct the URL to this image:
     url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
-    console.log('url', url);
 
     return url;
 }
 export async function uploadImage2(urls, postId) {
-    // console.log('postId', postId);
     for (let i = 0; i < urls.length; i++) {
         // console.log('urls[i] : ', urls[i]);
 
@@ -112,8 +106,10 @@ export async function uploadImage2(urls, postId) {
             image_url: urls[i],
         };
 
-        // const tryThis = await client.from('post-id-img').insert(obj);
         await client.from('post-id-img').insert(obj);
+
+        // return tryThis;
+        // await client.from('post-id-img').insert(obj);
         // console.log('tryThis.error', tryThis.error);
     }
 }
