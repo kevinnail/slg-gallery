@@ -4,18 +4,28 @@ import { renderCategoryOption, renderPost } from './render-utils.js';
 
 /* Get DOM Elements */
 const searchForm = document.getElementById('search-form');
-const notificationDisplay = document.getElementById('notification-display');
-const categorySelect = document.getElementById('astro-sign-select');
+// const notificationDisplay = document.getElementById('notification-display');
+// const categorySelect = document.getElementById('astro-sign-select');
 const postList = document.getElementById('post-list');
+const categorySelect = document.getElementById('category-select');
 
 /* State */
 let error = null;
 let posts = [];
-let category = [];
-let count = 0;
+// let category = [];
+// let count = 0;
 /* Events */
 
 window.addEventListener('load', async () => {
+    const searchParams = new URLSearchParams(location.search);
+    const category = searchParams.get('category');
+
+    if (category) {
+        findPosts(null, category);
+        await displayPosts();
+        categorySelect.value = category;
+        return;
+    }
     findPosts();
 
     // const categoryOption = await getCategory();
@@ -30,7 +40,7 @@ async function findPosts(title, category) {
 
     error = response.error;
     posts = response.data;
-    count = response.count;
+    // count = response.count;
     // displayNotifications();
     if (!error) {
         displayPosts();
