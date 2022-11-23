@@ -47,7 +47,7 @@ postForm.addEventListener('submit', async (e) => {
     const formData = new FormData(postForm);
     let imageFile = [];
     imageFile = formData.getAll('image');
-
+    imageFile.reverse();
     // works vvvvvvvvvvvvvvvvvvvvvvvvv
 
     // for (let i = 0; i < imageFile.length; i++) {

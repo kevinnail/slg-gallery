@@ -43,6 +43,7 @@ export function renderCategoryOption(astroSign) {
 // }
 export function renderPost(post) {
     const li = document.createElement('li');
+    console.log('post', post);
 
     // const a = document.createElement('a');
     // a.href = `/post/?id=${post.id}`;
@@ -61,6 +62,8 @@ export function renderPost(post) {
     img.src = post.image_url;
 
     const p = document.createElement('p');
+    post.description = truncateString(post.description, 100);
+    // post.description = 'hi';
     p.textContent = post.description;
 
     // const p2 = document.createElement('p');
@@ -96,4 +99,11 @@ function categoryEmoji(category) {
     if (category === 'Spinner-caps') return 'Spinner Caps';
     if (category === 'Misc') return 'Misc';
     if (category === 'Terp-pearls') return 'Terp Pearls';
+}
+function truncateString(str, n) {
+    if (str.length > n) {
+        return str.substring(0, n) + '...';
+    } else {
+        return str;
+    }
 }
