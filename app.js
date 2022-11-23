@@ -1,39 +1,39 @@
 /* Imports */
-import { getBeanies, getAstroSigns } from './fetch-utils.js';
-import { renderAstrosignOption, renderBeanie } from './render-utils.js';
+import { getPosts, getCategory } from './fetch-utils.js';
+import { renderCategoryOption, renderPost } from './render-utils.js';
 
 /* Get DOM Elements */
 const searchForm = document.getElementById('search-form');
 const notificationDisplay = document.getElementById('notification-display');
-const astrosignSelect = document.getElementById('astro-sign-select');
+const categorySelect = document.getElementById('astro-sign-select');
 const beanieList = document.getElementById('beanie-list');
 
 /* State */
 let error = null;
-let beanies = [];
-let astroSigns = [];
+let posts = [];
+let category = [];
 let count = 0;
 /* Events */
 
 window.addEventListener('load', async () => {
-    findBeanies();
+    findPosts();
 
-    const astroSignOption = await getAstroSigns();
-    astroSigns = astroSignOption.data;
+    const categoryOption = await getCategory();
+    category = categoryOption.data;
     if (!error) {
-        displayAstrosignOptions();
+        displayCategoryOptions();
     }
 });
 
-async function findBeanies(title, astroSign) {
-    const response = await getBeanies(title, astroSign);
+async function findPosts(title, category) {
+    const response = await getPosts(title, category);
 
     error = response.error;
-    beanies = response.data;
+    posts = response.data;
     count = response.count;
     displayNotifications();
     if (!error) {
-        displayBeanies();
+        displayPosts();
     }
 }
 
@@ -41,24 +41,24 @@ searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(searchForm);
     const title = formData.get('name');
-    const astroSign = formData.get('astroSign');
-    findBeanies(title, astroSign);
+    const category = formData.get('category');
+    findPosts(title, category);
 });
 
 /* Display Functions */
 
-function displayBeanies() {
+function displayPosts() {
     beanieList.innerHTML = '';
-    for (const beanie of beanies) {
-        const beanieEl = renderBeanie(beanie);
+    for (const post of posts) {
+        const beanieEl = renderPost(post);
         beanieList.append(beanieEl);
     }
 }
 
-function displayAstrosignOptions() {
-    for (const astroSign of astroSigns) {
-        const option = renderAstrosignOption(astroSign);
-        astrosignSelect.append(option);
+function displayCategoryOptions() {
+    for (const categor of category) {
+        const option = renderCategoryOption(categor);
+        categorySelect.append(option);
     }
 }
 
@@ -68,7 +68,7 @@ function displayNotifications() {
         notificationDisplay.textContent = error.message;
     } else {
         notificationDisplay.classList.remove('error');
-        notificationDisplay.textContent = `Showing ${beanies.length} of ${count} beanies.`;
+        notificationDisplay.textContent = `Showing ${posts.length} of ${count} Posts.`;
     }
 }
 

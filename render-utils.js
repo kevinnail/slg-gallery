@@ -1,11 +1,11 @@
-export function renderAstrosignOption(astroSign) {
+export function renderCategoryOption(astroSign) {
     const option = document.createElement('option');
     option.value = astroSign.name;
     option.textContent = astroSign.name;
     return option;
 }
 
-export function renderBeanie(beanie) {
+export function renderPost(beanie) {
     const li = document.createElement('li');
     li.classList.add('beanie-baby');
 
