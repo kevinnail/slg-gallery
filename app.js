@@ -1,6 +1,7 @@
 /* Imports */
 import { getPosts } from './fetch-utils.js';
-import { renderCategoryOption, renderPost } from './render-utils.js';
+// import { renderCategoryOption, renderPost } from './render-utils.js';
+import { renderPost } from './render-utils.js';
 
 /* Get DOM Elements */
 const searchForm = document.getElementById('search-form');
