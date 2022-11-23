@@ -172,9 +172,10 @@ main {
 
 #category:hover {
     cursor: pointer;
-    background-color: white;
+    background-color: rgb(201, 255, 203);
     color: black;
     transition: 500ms;
+    box-shadow: 0px 0px 30px 0px rgb(255, 255, 255);
 }
 
 .post-delete-button {
@@ -216,3 +217,11 @@ main {
     transform: scale(1.5);
     transition: 550ms;
 }
+.cat-btn {
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+}
+/* .cat-btn:hover {
+    background-color: blueviolet;
+} */

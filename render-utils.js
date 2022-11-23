@@ -63,9 +63,9 @@ export function renderPost(post) {
     const p = document.createElement('p');
     p.textContent = post.description;
 
-    const p2 = document.createElement('p');
-    p2.textContent = 'Contact: ' + post.contact;
-    p2.classList.add('contact-info');
+    // const p2 = document.createElement('p');
+    // p2.textContent = 'Contact: ' + post.contact;
+    // p2.classList.add('contact-info');
 
     // const p3 = document.createElement('p');
     // p3.textContent = `posted by ${profile} ${post.time}`;
@@ -74,16 +74,26 @@ export function renderPost(post) {
 
     // a.append(h3, h32, img, p, p2);
     // li.append(a);
-    li.append(h3, h32, img, p, p2);
+    // li.append(h3, h32, img, p, p2);
+    li.append(h3, h32, img, p);
     return li;
 }
 
 function categoryEmoji(category) {
+    if (category === 'Beads') return 'Beads';
+    if (category === 'Blunt-tips') return 'Blunt Tips';
+    if (category === 'Collabs') return 'Collabs';
+    if (category === 'Cups') return 'Cups';
     if (category === 'Dry-pieces') return 'Dry Pieces';
+    if (category === 'Goblets') return 'Goblets';
+    if (category === 'Iso-stations') return 'Iso Stations';
+    if (category === 'Marbles') return 'Marbles';
+    if (category === 'Pendants') return 'Pendants';
     if (category === 'Bubblers') return 'Bubblers';
     if (category === 'Recyclers') return 'Recyclers';
+    if (category === 'Rigs') return 'Rigs';
     if (category === 'Slides') return 'Slides';
-    if (category === 'Marbles') return 'Marbles';
-    if (category === 'Goblets') return 'Goblets';
+    if (category === 'Spinner-caps') return 'Spinner Caps';
     if (category === 'Misc') return 'Misc';
+    if (category === 'Terp-pearls') return 'Terp Pearls';
 }

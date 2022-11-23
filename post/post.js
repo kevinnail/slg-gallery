@@ -107,7 +107,7 @@ function displayPost() {
     postCategory.textContent = post.category;
 
     postDescription.textContent = post.description;
-    postContact.innerHTML = '<p style="font-weight:bold;" >Contact info:</p> ' + post.contact;
+    // postContact.innerHTML = '<p style="font-weight:bold;" >Contact info:</p> ' + post.contact;
     // console.log('urls.data.length', urls.data.length);
 
     for (let i = 0; i < urls.data.length; i++) {
