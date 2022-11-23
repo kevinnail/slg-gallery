@@ -91,3 +91,7 @@
 #search-button {
     height: 30px;
 }
+.hide {
+    display: none;
+    width: 500px;
+}

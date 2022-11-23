@@ -1,5 +1,5 @@
 /* Imports */
-import { getPosts } from './fetch-utils.js';
+import { getPosts, getUser } from './fetch-utils.js';
 // import { renderCategoryOption, renderPost } from './render-utils.js';
 import { renderPost } from './render-utils.js';
 
@@ -9,10 +9,12 @@ const searchForm = document.getElementById('search-form');
 // const categorySelect = document.getElementById('astro-sign-select');
 const postList = document.getElementById('post-list');
 const categorySelect = document.getElementById('category-select');
+const postEditorLink = document.getElementById('post-editor-link');
 
 /* State */
 let error = null;
 let posts = [];
+let user = getUser();
 // let category = [];
 // let count = 0;
 /* Events */
@@ -20,7 +22,10 @@ let posts = [];
 window.addEventListener('load', async () => {
     const searchParams = new URLSearchParams(location.search);
     const category = searchParams.get('category');
-
+    if (!user) {
+        // postEditorLink.classList.add('hide');
+        postEditorLink.textContent = '';
+    }
     if (category) {
         findPosts(null, category);
         await displayPosts();

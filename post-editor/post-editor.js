@@ -11,19 +11,20 @@ const errorDisplay = document.getElementById('error-display');
 const imageInput = document.getElementById('image-input');
 const preview = document.getElementById('preview');
 const addButton = document.getElementById('add-button');
-const profileName = document.getElementById('profile-name');
-const userAvatar = document.getElementById('user-avatar');
+// const profileName = document.getElementById('profile-name');
+// const userAvatar = document.getElementById('user-avatar');
 
 /* State */
 
 let error = null;
 let user = null;
-let profile = {};
+// let profile = {};
 
 /* Events */
 
 window.addEventListener('load', async () => {
     user = getUser();
+
     // profile = await getProfile(user.id);
 
     // profileName.textContent = '  ' + profile.data.username;
@@ -46,6 +47,7 @@ postForm.addEventListener('submit', async (e) => {
     const formData = new FormData(postForm);
     let imageFile = [];
     imageFile = formData.getAll('image');
+    console.log('fimagasefe', imageFile);
 
     // works vvvvvvvvvvvvvvvvvvvvvvvvv
 
@@ -72,8 +74,11 @@ postForm.addEventListener('submit', async (e) => {
         // comment
         const randomFolder = Math.floor(Date.now() * Math.random());
         // const imagePath = `reddit-clone/${randomFolder}/${imageFile[0].name}`;
-        imagePath.push('reddit-clone/' + randomFolder + '/' + imageFile[i].name);
-        url = await uploadImage('project-images', imagePath[i], imageFile[i]);
+        imagePath.push('current/' + randomFolder + '/' + imageFile[i].name);
+        console.log('imagePath', imageFile[i].name);
+
+        url = await uploadImage('stress-less-glass', imagePath[i], imageFile[i]);
+
         urls.push(url);
         // console.log('url: ', url);
     }
@@ -84,8 +89,9 @@ postForm.addEventListener('submit', async (e) => {
         category: formData.get('category'),
         title: formData.get('title'),
         description: formData.get('description'),
-        contact: formData.get('contact'),
-        image_url: urls[0],
+        image_url: url,
+        // contact: formData.get('contact'),
+        // image_url: urls[0],
         // time: time,
         // author: profile.data.id,
     };
@@ -104,8 +110,10 @@ postForm.addEventListener('submit', async (e) => {
     //     author: profile.data.id,
     // };
     const response = await createPost(post);
+
     // console.log('response.data from createPost', response.data);
     // console.log('urls: ', urls);
+
     await uploadImage2(urls, response.data.id);
     // need another function to input data into the post-id-image table => post_id/ post(id)
     error = response.error;

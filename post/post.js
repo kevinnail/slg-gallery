@@ -32,14 +32,16 @@ window.addEventListener('load', async () => {
     // profile = response2.data;
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get('id');
-    if (!id) {
-        location.replace('/');
-        return;
-    }
     const response = await getPost(id);
+    // if (!id) {
+    //     location.replace('/');
+    //     return;
+    // }
     error = response.error;
     post = response.data;
     if (error) {
+        console.log('error', error);
+
         location.replace('/');
     } else {
         // if (user.id === post.user_id) {

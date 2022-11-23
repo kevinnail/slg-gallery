@@ -1,6 +1,6 @@
-const SUPABASE_URL = 'https://lmxgwefcojhyudouhfdi.supabase.co';
+const SUPABASE_URL = 'https://lknorjsqpymayqwsnryo.supabase.co';
 const SUPABASE_KEY =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxteGd3ZWZjb2poeXVkb3VoZmRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjQ0MTE4NjAsImV4cCI6MTk3OTk4Nzg2MH0.sJ2d3kgfQnCLcAr9C7ybkPsuB6wHrKD1cv_Dva8hdqI';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxrbm9yanNxcHltYXlxd3NucnlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjkxNjQwMTUsImV4cCI6MTk4NDc0MDAxNX0.VNrjjjios2POI2xABGY7Xf0vlqi_fXeBZZ9xBdLdKaI';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -57,14 +57,17 @@ export async function getPosts(title, category) {
 export async function getPost(id) {
     return await client
         .from('posts')
-        .select(`*,comments(*)`)
+        .select(`*`)
         .eq('id', id)
-        .order('created_at', { foreignTable: 'comments', ascending: false })
+        // .order('created_at', { foreignTable: 'comments', ascending: false })
+        .order('created_at')
         .single();
 }
 
 export async function getUrls(id) {
     const response = await client.from('post-id-img').select('*').eq('post_id', id);
+    console.log('response from getUrls', response);
+
     return response;
 }
 // export async function getCategory() {
@@ -73,8 +76,11 @@ export async function getUrls(id) {
 // return response;
 // }
 export async function createPost(post) {
+    console.log('post from createPost', post);
+
     return await client.from('posts').insert(post).single();
 }
+
 export async function uploadImage(bucketName, imagePath, imageFile) {
     const bucket = client.storage.from(bucketName);
     let url = null;
@@ -84,6 +90,7 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
         // existing file with same name.
         upsert: true,
     });
+    console.log('response.error', response.error);
 
     if (response.error) {
         return null;
@@ -91,6 +98,7 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
 
     // Construct the URL to this image:
     url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+    console.log('url', url);
 
     return url;
 }
