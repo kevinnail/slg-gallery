@@ -8,13 +8,13 @@ import { getPost, getPosts, getUrls } from '../fetch-utils.js';
 const postTitle = document.getElementById('title');
 const postDescription = document.getElementById('description');
 const postCategory = document.getElementById('category');
-const postContact = document.getElementById('contact');
+// const postContact = document.getElementById('contact');
 // const commentList = document.getElementById('comment-list');
 // const addCommentForm = document.getElementById('add-comment-form');
-const errorDisplay = document.getElementById('error-display');
+// const errorDisplay = document.getElementById('error-display');
 // const profileName = document.getElementById('profile-name');
 // const userAvatar = document.getElementById('user-avatar');
-const deleteButton = document.getElementById('delete-button');
+// const deleteButton = document.getElementById('delete-button');
 const gallery = document.getElementById('gallery');
 
 /*  State  */
@@ -40,7 +40,7 @@ window.addEventListener('load', async () => {
     error = response.error;
     post = response.data;
     if (error) {
-        console.log('error', error);
+        // console.log('error', error);
 
         location.replace('/');
     } else {
@@ -177,12 +177,12 @@ function displayPost() {
 // }
 // }
 
-function displayError() {
-    if (error) {
-        errorDisplay.textContent = error.message;
-    } else {
-        errorDisplay.textContent = '';
-    }
-}
+// function displayError() {
+//     if (error) {
+//         errorDisplay.textContent = error.message;
+//     } else {
+//         errorDisplay.textContent = '';
+//     }
+// }
 
 // data functions
