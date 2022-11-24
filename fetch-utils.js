@@ -31,12 +31,6 @@ export async function signOutUser() {
 // export async functions that fetch data
 
 export async function getPosts(title, category) {
-    // let query = client
-    //     .from('beanie_babies')
-    //     .select('*', { count: 'exact' })
-    //     .order('title')
-    //     .limit(100);
-
     let query = client
         .from('posts')
         .select('*', { count: 'exact' })
@@ -55,13 +49,7 @@ export async function getPosts(title, category) {
     return response;
 }
 export async function getPost(id) {
-    return await client
-        .from('posts')
-        .select(`*`)
-        .eq('id', id)
-        // .order('created_at', { foreignTable: 'comments', ascending: false })
-        .order('created_at')
-        .single();
+    return await client.from('posts').select(`*`).eq('id', id).order('created_at').single();
 }
 
 export async function getUrls(id) {
@@ -69,11 +57,7 @@ export async function getUrls(id) {
 
     return response;
 }
-// export async function getCategory() {
-// let query = client.from('post').select('category').order('name');
-// const response = await query;
-// return response;
-// }
+
 export async function createPost(post) {
     return await client.from('posts').insert(post).single();
 }
@@ -87,6 +71,7 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
         // existing file with same name.
         upsert: true,
     });
+    console.log('response', response);
 
     if (response.error) {
         return null;
@@ -99,17 +84,11 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
 }
 export async function uploadImage2(urls, postId) {
     for (let i = 0; i < urls.length; i++) {
-        // console.log('urls[i] : ', urls[i]);
-
         let obj = {
             post_id: postId,
             image_url: urls[i],
         };
 
         await client.from('post-id-img').insert(obj);
-
-        // return tryThis;
-        // await client.from('post-id-img').insert(obj);
-        // console.log('tryThis.error', tryThis.error);
     }
 }

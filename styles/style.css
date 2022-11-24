@@ -49,6 +49,7 @@
 .image-size {
     max-height: 300px;
     max-width: 300px;
+    border-radius: 0.5em;
 }
 .contact-info {
     font-weight: 700;
@@ -94,4 +95,15 @@
 .hide {
     display: none;
     width: 500px;
+}
+.hello {
+    background-color: yellow;
+    padding: 25px;
+    background-image: linear-gradient(black, white, white, white, white, black);
+    border-top: 1px solid rgb(132, 132, 132);
+    border-right: 1px solid rgb(45, 45, 45);
+    border-bottom: 1px solid rgb(45, 45, 45);
+    border-left: 1px solid rgb(132, 132, 132);
+    box-shadow: 2px 2px 20px 0px white;
+    border-radius: 10px;
 }
