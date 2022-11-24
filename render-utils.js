@@ -43,7 +43,6 @@ export function renderCategoryOption(astroSign) {
 // }
 export function renderPost(post) {
     const li = document.createElement('li');
-    console.log('post', post);
 
     // const a = document.createElement('a');
     // a.href = `/post/?id=${post.id}`;

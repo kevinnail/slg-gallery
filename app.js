@@ -56,7 +56,7 @@ async function findPosts(title, category) {
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(searchForm);
-    const title = formData.get('name');
+    const title = formData.get('title');
     const category = formData.get('category');
     findPosts(title, category);
 });
