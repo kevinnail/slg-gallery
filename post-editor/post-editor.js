@@ -33,6 +33,8 @@ window.addEventListener('load', async () => {
 
 imageInput.addEventListener('change', () => {
     const file = imageInput.files[0];
+    console.log('file', file);
+
     if (file) {
         preview.src = URL.createObjectURL(file);
     } else {
