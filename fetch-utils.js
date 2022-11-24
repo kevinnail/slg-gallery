@@ -71,6 +71,7 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
         // existing file with same name.
         upsert: true,
     });
+    console.log('response', response);
 
     if (response.error) {
         return null;
