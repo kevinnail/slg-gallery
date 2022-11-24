@@ -3,6 +3,7 @@
 import '../auth/user.js';
 // import { uploadImage, uploadImage2, createPost, getUser } from '../fetch-utils.js';
 import { uploadImage, uploadImage2, createPost } from '../fetch-utils.js';
+import { renderPreviews } from '../render-utils.js';
 // import { getDateStamp } from '../calc-utils.js';
 
 /* DOM */
@@ -12,12 +13,15 @@ const errorDisplay = document.getElementById('error-display');
 const imageInput = document.getElementById('image-input');
 const preview = document.getElementById('preview');
 const addButton = document.getElementById('add-button');
+const previewList = document.getElementById('preview-list');
+
 // const profileName = document.getElementById('profile-name');
 // const userAvatar = document.getElementById('user-avatar');
 
 /* State */
 
 let error = null;
+let files = [];
 // let user = null;
 
 // let profile = {};
@@ -32,10 +36,15 @@ window.addEventListener('load', async () => {
 });
 
 imageInput.addEventListener('change', () => {
-    const file = imageInput.files[0];
+    // const file = imageInput.files[0];
+    files = imageInput.files;
 
-    if (file) {
-        preview.src = URL.createObjectURL(file);
+    if (files) {
+        // preview.src = URL.createObjectURL(file);
+        for (const file of files) {
+            const prevEl = renderPreviews(file);
+            previewList.append(prevEl);
+        }
     } else {
         preview.src = '../assets/pet-photo-placeholder.png';
     }

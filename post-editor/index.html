@@ -74,7 +74,7 @@
                     <input name="title" required placeholder="Enter title" />
                 </label>
                 <label>
-                    <div>Description</div>
+                    <div style="color: black">Description</div>
                     <textarea
                         name="description"
                         required=""
@@ -83,7 +83,7 @@
                 </label>
 
                 <label>
-                    <div>Photo</div>
+                    <div style="color: black">Photo(s)</div>
                     <input
                         id="image-input"
                         name="image"
@@ -93,12 +93,13 @@
                         placeholder="upload an image..."
                     />
                 </label>
-                <img
+                <!-- <img
                     id="preview"
                     class="preview"
                     alt="avatar review"
                     src="../assets/place-holder.png"
-                />
+                /> -->
+                <ul id="preview-list" class="preview-list"></ul>
 
                 <button id="add-button">Add Post</button>
 

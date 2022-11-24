@@ -106,3 +106,12 @@ function truncateString(str, n) {
         return str;
     }
 }
+
+export function renderPreviews(file) {
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+    img.classList.add('preview');
+    img.src = URL.createObjectURL(file);
+    li.append(img);
+    return li;
+}

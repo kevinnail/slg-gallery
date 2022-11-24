@@ -4,7 +4,13 @@
     object-fit: cover;
     border: 1px solid var(--placeholder-color);
     background: white;
+    display: inline-block;
 }
 .div-post-editor {
     color: black;
+}
+
+.preview-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
