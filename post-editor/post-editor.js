@@ -1,7 +1,8 @@
 /* Imports */
 
 import '../auth/user.js';
-import { uploadImage, uploadImage2, createPost, getUser } from '../fetch-utils.js';
+// import { uploadImage, uploadImage2, createPost, getUser } from '../fetch-utils.js';
+import { uploadImage, uploadImage2, createPost } from '../fetch-utils.js';
 // import { getDateStamp } from '../calc-utils.js';
 
 /* DOM */
