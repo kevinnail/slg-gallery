@@ -59,6 +59,7 @@ postForm.addEventListener('submit', async (e) => {
         title: formData.get('title'),
         description: formData.get('description'),
         image_url: url,
+        price: formData.get('price'),
     };
 
     const response = await createPost(post);

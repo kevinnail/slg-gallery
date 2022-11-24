@@ -5,7 +5,7 @@ import { getPost, getPosts, getUrls } from '../fetch-utils.js';
 const postTitle = document.getElementById('title');
 const postDescription = document.getElementById('description');
 const postCategory = document.getElementById('category');
-
+const postPrice = document.getElementById('price');
 const gallery = document.getElementById('gallery');
 
 /*  State  */
@@ -40,7 +40,7 @@ function displayPost() {
     postTitle.textContent = post.title;
     postCategory.textContent = post.category;
     postDescription.textContent = post.description;
-
+    postPrice.innerHTML = `Price (shipping included): $${post.price}`;
     for (let i = 0; i < urls.data.length; i++) {
         const imgs = document.createElement('img');
         imgs.classList.add('post-gallery-pics');
