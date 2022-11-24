@@ -22,7 +22,7 @@ export function renderPost(post) {
     img.src = post.image_url;
 
     const p = document.createElement('p');
-    post.description = truncateString(post.description, 100);
+    post.description = truncateString(post.description, 90);
     p.textContent = post.description;
 
     li.append(h3, h32, img, p);
