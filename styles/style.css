@@ -50,6 +50,8 @@
     max-height: 300px;
     max-width: 300px;
     border-radius: 0.5em;
+    margin: auto;
+    display: block;
 }
 .contact-info {
     font-weight: 700;
