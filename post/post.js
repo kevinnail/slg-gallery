@@ -45,6 +45,9 @@ function displayPost() {
         const imgs = document.createElement('img');
         imgs.classList.add('post-gallery-pics');
         imgs.src = urls.data[i].image_url;
+        imgs.addEventListener('click', () => {
+            imgs.requestFullscreen();
+        });
         gallery.append(imgs);
     }
 }
