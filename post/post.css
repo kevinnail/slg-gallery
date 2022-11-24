@@ -70,14 +70,16 @@ main {
 
 .single-post {
     display: grid;
-    grid-template-columns: 30% 55% 1fr;
+    grid-template-columns: 35% 50% 1fr;
+    justify-content: center;
 }
 .post-container {
     width: 80%;
     margin: auto;
     margin-top: 0;
     border: 1px solid black;
-    padding: 40px;
+    /* padding: 40px; */
+    padding: 40px 0px 40px 0px;
     background-image: linear-gradient(black, white, white, black);
     border-top: 1px solid rgb(132, 132, 132);
     border-right: 1px solid rgb(45, 45, 45);
@@ -101,7 +103,7 @@ main {
     background-color: rgba(0, 43, 100, 1);
     border: 1px solid black;
     padding: 5px 10px 5px 10px;
-    margin: 10px;
+    margin: 20px auto;
     border-radius: 5px;
     box-shadow: 0px 0px 10px 0px white;
     text-align: left;
@@ -221,6 +223,7 @@ main {
     border-radius: 1em;
     background-color: white;
     color: black;
+    margin: auto auto;
 }
 /* .cat-btn:hover {
     background-color: blueviolet;
