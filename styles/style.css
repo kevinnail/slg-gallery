@@ -47,8 +47,8 @@
 }
 
 .image-size {
-    max-height: 300px;
-    max-width: 300px;
+    max-height: 80%;
+    max-width: 80%;
     border-radius: 0.5em;
     margin: auto;
     display: block;
