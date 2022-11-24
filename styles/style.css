@@ -50,7 +50,7 @@
     max-height: 80%;
     max-width: 80%;
     border-radius: 0.5em;
-    margin: auto;
+    margin: 10px auto 0px;
     display: block;
 }
 .contact-info {

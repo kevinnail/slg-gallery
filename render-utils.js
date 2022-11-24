@@ -25,7 +25,7 @@ export function renderPost(post) {
     post.description = truncateString(post.description, 90);
     p.textContent = post.description;
 
-    li.append(h3, h32, img, p);
+    li.append(h3, img, h32, p);
     return li;
 }
 
