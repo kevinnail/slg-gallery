@@ -17,16 +17,15 @@ const addButton = document.getElementById('add-button');
 /* State */
 
 let error = null;
-let user = null;
+// let user = null;
+
 // let profile = {};
 
 /* Events */
 
 window.addEventListener('load', async () => {
-    user = getUser();
-
+    // user = getUser();
     // profile = await getProfile(user.id);
-
     // profileName.textContent = '  ' + profile.data.username;
     // userAvatar.src = profile.data.url;
 });
