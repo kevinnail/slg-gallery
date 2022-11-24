@@ -50,3 +50,4 @@ function displayPost() {
 }
 
 // data functions
+// email function
