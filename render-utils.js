@@ -92,7 +92,11 @@ export function renderItem(item, items, delItems) {
     p.textContent = item.title;
     p.classList.add('admin-p');
 
+    const p2 = document.createElement('p');
+    p2.textContent = `$${item.price}`;
+    p2.classList.add('admin-p');
+
     // li.append(input, img, p);
-    li.append(input, img, p);
+    li.append(input, img, p, p2);
     return li;
 }

@@ -119,10 +119,8 @@
 
                     <ul id="preview-list" class="preview-list"></ul>
 
-                    <button id="form-reset" class="reset-button left-corners">Form Reset</button>
-                    <button id="add-button" class="reset-button left-corners">
-                        Add or Update Post
-                    </button>
+                    <button id="form-reset" class="left-corners smaller">Form Reset</button>
+                    <button id="add-button" class="left-corners bigger">Add or Update Post</button>
 
                     <p id="error-display"></p>
                 </form>
@@ -130,13 +128,20 @@
             <section class="admin-post-list">
                 <h1 class="heading up">Post Details</h1>
 
-                <button id="edit-post-button" class="delete-button post-detail">
+                <button id="edit-post-button" class="delete-button post-detail edit">
                     Edit Selected
                 </button>
                 <button id="delete-post-button" class="delete-button post-detail">
                     Delete Selected
                 </button>
-                <ul id="item-list" class="item-list"></ul>
+                <ul id="item-list" class="item-list">
+                    <li>
+                        <p class="admin-titles">Select</p>
+                        <p class="admin-titles2">Image</p>
+                        <p class="admin-titles3">Title</p>
+                        <p class="admin-titles">Price</p>
+                    </li>
+                </ul>
             </section>
         </main>
         <footer></footer>
