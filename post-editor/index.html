@@ -53,6 +53,7 @@
         <main class="post-editor-page">
             <section>
                 <form id="post-form">
+                    <h1 class="heading">Create/ Edit Posts</h1>
                     <label>
                         <div class="label">Category</div>
                         <select id="edit-cat" required name="category">
@@ -118,14 +119,20 @@
 
                     <ul id="preview-list" class="preview-list"></ul>
 
-                    <button id="add-button">Add Post</button>
+                    <button id="add-button">Add or Update Post</button>
 
                     <p id="error-display"></p>
                 </form>
             </section>
             <section class="admin-post-list">
-                <button id="edit-post-button" class="delete-button">Edit</button>
-                <button id="delete-post-button" class="delete-button">Delete</button>
+                <h1 class="heading up">Post Details</h1>
+
+                <button id="edit-post-button" class="delete-button post-detail">
+                    Edit Selected
+                </button>
+                <button id="delete-post-button" class="delete-button post-detail">
+                    Delete Selected
+                </button>
                 <ul id="item-list" class="item-list"></ul>
             </section>
         </main>

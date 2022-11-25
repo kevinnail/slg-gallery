@@ -124,9 +124,21 @@ editPostBtn.addEventListener('click', async () => {
         renderItem(item, items, delItems);
     }
 
-    postUpdate = delItems[0];
+    // this isn't working because delItems[0] is a new value maybe?  needs fixing
+    // if (delItems[0]) {
+    //     postUpdate = delItems[0];
+    //     console.log('delItems[0]', delItems[0]);
+    // } else {
+    //     postUpdate = delItems[1];
+    //     console.log('firing with 1- should be after delete');
+    // }
+    if (!delItems[1]) {
+        postUpdate = delItems[0];
+    } else {
+        postUpdate = delItems[1];
+    }
 
-    const tempPost = await getPost(delItems[0]);
+    const tempPost = await getPost(postUpdate);
 
     editCat.value = tempPost.data.category;
     editTitle.value = tempPost.data.title;
@@ -143,6 +155,13 @@ deletePostBtn.addEventListener('click', async () => {
         const postEl = renderItem(item, items, delItems);
         itemList.append(postEl);
     }
+    editCat.value = null;
+    editTitle.value = '';
+    editPrice.value = '';
+    editDescription.value = '';
+    // console.log('items', items);
+
+    // location.replace('/post-editor');
 });
 
 function displayError() {

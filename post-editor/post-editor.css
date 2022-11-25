@@ -95,3 +95,11 @@
     box-shadow: 0px 0px 15px 0px white;
     cursor: pointer;
 }
+.post-detail {
+    width: 125px;
+    font-weight: bold;
+}
+.up {
+    position: relative;
+    top: -20px;
+}
