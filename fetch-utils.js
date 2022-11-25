@@ -71,7 +71,6 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
         // existing file with same name.
         upsert: true,
     });
-    console.log('response', response);
 
     if (response.error) {
         return null;
@@ -91,4 +90,9 @@ export async function uploadImage2(urls, postId) {
 
         await client.from('post-id-img').insert(obj);
     }
+}
+
+export async function deletePostById(id) {
+    await client.from('post-id-img').delete().eq('post_id', id);
+    await client.from('posts').delete().eq('id', id).single();
 }

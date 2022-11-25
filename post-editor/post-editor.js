@@ -1,7 +1,7 @@
 /* Imports */
 
 import '../auth/user.js';
-import { uploadImage, uploadImage2, createPost, getPosts } from '../fetch-utils.js';
+import { uploadImage, uploadImage2, createPost, getPosts, deletePostById } from '../fetch-utils.js';
 import { renderPreviews, renderItem } from '../render-utils.js';
 
 /* DOM */
@@ -42,7 +42,6 @@ window.addEventListener('load', async () => {
         const postEl = renderItem(item, items, delItems);
         itemList.append(postEl);
     }
-    console.log('delItems on load', delItems);
 });
 
 imageInput.addEventListener('change', () => {
@@ -99,25 +98,22 @@ postForm.addEventListener('submit', async (e) => {
 });
 
 deletePostBtn.addEventListener('click', async () => {
-    // for (const item of posts) {
-    // }
-    // console.log('itemlist', itemList);
-
-    console.log('delItems in delete event', delItems);
-    // const x = removeDuplicates(delItems);
-    // console.log('delItems after duplicate removal', x);
+    itemList.innerHTML = '';
+    await deletePostById(delItems);
+    items = await getPosts();
+    data = items.data;
+    for (const item of data) {
+        // input.type = 'checkbox';
+        // input.classList.add('check-box');
+        // input.addEventListener('click', () => {
+        //     posts.push(item);
+        //     console.log('item.id', item);
+        //     itemList.append(input);
+        // });
+        const postEl = renderItem(item, items, delItems);
+        itemList.append(postEl);
+    }
 });
-
-// function removeDuplicates(arr) {
-//     var unique = [];
-//     arr.forEach((element) => {
-//         if (!unique.includes(element)) {
-//             unique.push(element);
-//         }
-//     });
-//     return unique;
-// }
-/* Display Functions */
 
 function displayError() {
     if (error) {
