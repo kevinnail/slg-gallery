@@ -48,7 +48,7 @@
         <main>
             <form id="post-form">
                 <label>
-                    <div>Category</div>
+                    <div class="label">Category</div>
                     <select required name="category">
                         <option value="null">choose category</option>
                         <option value="Beads">Beads</option>
@@ -70,15 +70,15 @@
                     </select>
                 </label>
                 <label>
-                    <div>Title</div>
+                    <div class="label">Title</div>
                     <input name="title" required placeholder="Enter title" maxlength="30" />
                 </label>
                 <label>
-                    <div style="color: black">Price</div>
-                    <input name="price" required placeholder="Enter price" />
+                    <div class="label">Price</div>
+                    <input name="price" type="number" required placeholder="Enter price" />
                 </label>
                 <label>
-                    <div style="color: black">Description</div>
+                    <div class="label">Description</div>
                     <textarea
                         name="description"
                         required=""
@@ -87,7 +87,7 @@
                 </label>
 
                 <label>
-                    <div style="color: black">Photo(s)</div>
+                    <div class="label">Photo(s)</div>
                     <input
                         id="image-input"
                         name="image"
