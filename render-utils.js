@@ -81,7 +81,6 @@ export function renderItem(item, items, delItems) {
                     delItems.push(item.id);
                 }
             }
-            console.log('item.id', item.id);
         }
     });
 

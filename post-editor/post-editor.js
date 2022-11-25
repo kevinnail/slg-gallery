@@ -29,36 +29,21 @@ const editTitle = document.getElementById('edit-title');
 const editPrice = document.getElementById('edit-price');
 const editDescription = document.getElementById('edit-description');
 
-const input = document.createElement('input');
+// const input = document.createElement('input');
 
 /* State */
 
 let error = null;
 let files = [];
 let data = [];
-let posts = [];
+// let posts = [];
 let items = [];
 let delItems = [];
-let post = null;
+// let post = null;
 let postUpdate = null;
 /* Events */
 
 window.addEventListener('load', async () => {
-    const searchParams = new URLSearchParams(location.search);
-    const id = searchParams.get('id');
-    const response = await getPost(id);
-
-    error = response.error;
-    post = response.data;
-    if (error) {
-        // location.replace('/');
-        // console.log('error', error);
-    } else {
-        // urls = await getUrls(post.id);
-        // displayPostEdit();
-    }
-    console.log('post in window load', post);
-
     items = await getPosts();
     data = items.data;
     for (const item of data) {
@@ -66,10 +51,6 @@ window.addEventListener('load', async () => {
         itemList.append(postEl);
     }
 });
-
-// function displayPostEdit() {
-//     location.replace(`/`)
-// }
 
 imageInput.addEventListener('change', () => {
     files = imageInput.files;
@@ -103,14 +84,6 @@ postForm.addEventListener('submit', async (e) => {
         url = await uploadImage('stress-less-glass', imagePath[i], imageFile[i]);
         urls.push(url);
     }
-    // const post = {
-    //     id: postUpdate,
-    //     category: formData.get('category'),
-    //     title: formData.get('title'),
-    //     description: formData.get('description'),
-    //     image_url: url,
-    //     price: formData.get('price'),
-    // };
 
     if (postUpdate) {
         const post = {
@@ -148,16 +121,12 @@ editPostBtn.addEventListener('click', async () => {
     items = await getPosts();
     data = items.data;
     for (const item of data) {
-        // const postEl = renderItem(item, items, delItems);
         renderItem(item, items, delItems);
     }
 
     postUpdate = delItems[0];
 
     const tempPost = await getPost(delItems[0]);
-
-    // console.log('tempPost.data.id', tempPost.data.id);
-    // console.log('post', post);
 
     editCat.value = tempPost.data.category;
     editTitle.value = tempPost.data.title;

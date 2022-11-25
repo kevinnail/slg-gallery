@@ -76,12 +76,6 @@ export async function updatePost(post) {
     return response;
 }
 
-// category: formData.get('category'),
-// title: formData.get('title'),
-// description: formData.get('description'),
-// image_url: url,
-// price: formData.get('price'),
-
 export async function uploadImage(bucketName, imagePath, imageFile) {
     const bucket = client.storage.from(bucketName);
     let url = null;
