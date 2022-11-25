@@ -93,6 +93,8 @@ export async function uploadImage2(urls, postId) {
 }
 
 export async function deletePostById(id) {
-    await client.from('post-id-img').delete().eq('post_id', id);
-    await client.from('posts').delete().eq('id', id).single();
+    for (let i = 0; i < id.length; i++) {
+        await client.from('post-id-img').delete().eq('post_id', id[i]);
+        await client.from('posts').delete().eq('id', id[i]).single();
+    }
 }
