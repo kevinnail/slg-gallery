@@ -103,17 +103,35 @@ postForm.addEventListener('submit', async (e) => {
         url = await uploadImage('stress-less-glass', imagePath[i], imageFile[i]);
         urls.push(url);
     }
-    const post = {
-        id: postUpdate,
-        category: formData.get('category'),
-        title: formData.get('title'),
-        description: formData.get('description'),
-        image_url: url,
-        price: formData.get('price'),
-    };
+    // const post = {
+    //     id: postUpdate,
+    //     category: formData.get('category'),
+    //     title: formData.get('title'),
+    //     description: formData.get('description'),
+    //     image_url: url,
+    //     price: formData.get('price'),
+    // };
+
     if (postUpdate) {
+        const post = {
+            id: postUpdate,
+            category: formData.get('category'),
+            title: formData.get('title'),
+            description: formData.get('description'),
+            image_url: url,
+            price: formData.get('price'),
+        };
         await updatePost(post);
+        location.assign('/post-editor');
     } else {
+        const post = {
+            category: formData.get('category'),
+            title: formData.get('title'),
+            description: formData.get('description'),
+            image_url: url,
+            price: formData.get('price'),
+        };
+
         const response = await createPost(post);
         await uploadImage2(urls, response.data.id);
         error = response.error;
@@ -125,6 +143,7 @@ postForm.addEventListener('submit', async (e) => {
         }
     }
 });
+
 editPostBtn.addEventListener('click', async () => {
     items = await getPosts();
     data = items.data;
@@ -134,7 +153,6 @@ editPostBtn.addEventListener('click', async () => {
     }
 
     postUpdate = delItems[0];
-    console.log('post in edit button', postUpdate);
 
     const tempPost = await getPost(delItems[0]);
 
@@ -145,7 +163,6 @@ editPostBtn.addEventListener('click', async () => {
     editTitle.value = tempPost.data.title;
     editPrice.value = tempPost.data.price;
     editDescription.value = tempPost.data.description;
-    // location.replace(`/post-editor/?id=${post.id}`);
 });
 
 deletePostBtn.addEventListener('click', async () => {
