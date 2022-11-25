@@ -55,7 +55,7 @@
                 <form id="post-form">
                     <label>
                         <div class="label">Category</div>
-                        <select required name="category">
+                        <select id="edit-cat" required name="category">
                             <option value="null">choose category</option>
                             <option value="Beads">Beads</option>
                             <option value="Blunt Tips">Blunt Tips</option>
@@ -77,15 +77,28 @@
                     </label>
                     <label>
                         <div class="label">Title</div>
-                        <input name="title" required placeholder="Enter title" maxlength="30" />
+                        <input
+                            id="edit-title"
+                            name="title"
+                            required
+                            placeholder="Enter title"
+                            maxlength="30"
+                        />
                     </label>
                     <label>
                         <div class="label">Price</div>
-                        <input name="price" type="number" required placeholder="Enter price" />
+                        <input
+                            id="edit-price"
+                            name="price"
+                            type="number"
+                            required
+                            placeholder="Enter price"
+                        />
                     </label>
                     <label>
                         <div class="label">Description</div>
                         <textarea
+                            id="edit-description"
                             name="description"
                             required=""
                             placeholder="What are you posting about?"
@@ -98,7 +111,6 @@
                             id="image-input"
                             name="image"
                             type="file"
-                            required
                             multiple
                             placeholder="upload an image..."
                         />
@@ -117,6 +129,7 @@
                 </form>
             </section>
             <section class="admin-post-list">
+                <button id="edit-post-button" class="delete-button">Edit</button>
                 <button id="delete-post-button" class="delete-button">Delete</button>
                 <ul id="item-list" class="item-list"></ul>
             </section>

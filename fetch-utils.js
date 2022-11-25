@@ -62,6 +62,26 @@ export async function createPost(post) {
     return await client.from('posts').insert(post).single();
 }
 
+export async function updatePost(post) {
+    const response = await client
+        .from('posts')
+        .update({
+            category: post.category,
+            title: post.title,
+            description: post.description,
+            price: post.price,
+        })
+        .eq('id', post.id);
+
+    return response;
+}
+
+// category: formData.get('category'),
+// title: formData.get('title'),
+// description: formData.get('description'),
+// image_url: url,
+// price: formData.get('price'),
+
 export async function uploadImage(bucketName, imagePath, imageFile) {
     const bucket = client.storage.from(bucketName);
     let url = null;
