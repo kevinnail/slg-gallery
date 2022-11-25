@@ -1,8 +1,8 @@
 /* Imports */
 
 import '../auth/user.js';
-import { uploadImage, uploadImage2, createPost } from '../fetch-utils.js';
-import { renderPreviews } from '../render-utils.js';
+import { uploadImage, uploadImage2, createPost, getPosts } from '../fetch-utils.js';
+import { renderPreviews, renderItem } from '../render-utils.js';
 
 /* DOM */
 
@@ -12,15 +12,25 @@ const imageInput = document.getElementById('image-input');
 const preview = document.getElementById('preview');
 const addButton = document.getElementById('add-button');
 const previewList = document.getElementById('preview-list');
+const itemList = document.getElementById('item-list');
+const deletePostBtn = document.getElementById('delete-post-button');
 
 /* State */
 
 let error = null;
 let files = [];
+let data = [];
 
 /* Events */
 
-window.addEventListener('load', async () => {});
+window.addEventListener('load', async () => {
+    const items = await getPosts();
+    data = items.data;
+    for (const item of data) {
+        const postEl = renderItem(item);
+        itemList.append(postEl);
+    }
+});
 
 imageInput.addEventListener('change', () => {
     files = imageInput.files;
@@ -28,6 +38,7 @@ imageInput.addEventListener('change', () => {
     if (files) {
         for (const file of files) {
             const prevEl = renderPreviews(file);
+
             previewList.append(prevEl);
         }
     } else {
@@ -72,6 +83,10 @@ postForm.addEventListener('submit', async (e) => {
     } else {
         location.assign('/');
     }
+});
+
+deletePostBtn.addEventListener('click', async () => {
+    console.log('itemList.length: ', itemList.length);
 });
 
 /* Display Functions */

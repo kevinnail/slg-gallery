@@ -5,7 +5,7 @@ export function renderCategoryOption(astroSign) {
     return option;
 }
 
-export function renderPost(post, user) {
+export function renderPost(post) {
     const li = document.createElement('li');
 
     const h3 = document.createElement('h3');
@@ -61,5 +61,27 @@ export function renderPreviews(file) {
     img.classList.add('preview');
     img.src = URL.createObjectURL(file);
     li.append(img);
+    return li;
+}
+
+export function renderItem(item) {
+    const li = document.createElement('li');
+
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.classList.add('check-box');
+    input.addEventListener('click', () => {
+        alert('You have selected post ' + item.id + ' titled ' + item.title + ' for deletion!');
+    });
+
+    const img = document.createElement('img');
+    img.src = item.image_url;
+    img.classList.add('admin-preview');
+
+    const p = document.createElement('p');
+    p.textContent = item.title;
+    p.classList.add('admin-p');
+
+    li.append(input, img, p);
     return li;
 }

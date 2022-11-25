@@ -6,6 +6,7 @@
     background: white;
     display: inline-block;
 }
+
 .div-post-editor {
     color: black;
 }
@@ -22,4 +23,75 @@
     text-align: center;
     border-radius: 0.5em;
     border: 2px solid rgb(0, 0, 0);
+}
+
+.post-editor-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* admin */
+.item-list {
+    display: grid;
+    gap: 8px;
+}
+.item-list li {
+    display: flex;
+    align-items: center;
+    grid-template-rows: 1fr;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.admin-preview {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border: 1px solid var(--placeholder-color);
+    background: white;
+    /* display: inline; */
+}
+
+.admin-p {
+    /* border: 1px solid var(--placeholder-color); */
+    position: relative;
+    /* top: -24px; */
+    display: inline;
+    /* background-color: white; */
+    padding: 20px;
+    margin: 0px;
+}
+
+.check-box {
+    margin: 23px;
+}
+
+.admin-post-list {
+    padding: 40px;
+    background-image: linear-gradient(rgba(0, 0, 0, 1), white, white, rgba(0, 0, 0, 1));
+    gap: 20px;
+    border-top: 1px solid rgb(132, 132, 132);
+    border-right: 1px solid rgb(45, 45, 45);
+    border-bottom: 1px solid rgb(45, 45, 45);
+    border-left: 1px solid rgb(132, 132, 132);
+    box-shadow: 2px 2px 20px 0px white;
+    border-radius: 10px;
+}
+
+.delete-button {
+    display: inline-block;
+    grid-column-start: 5;
+    border-radius: 10px;
+    height: 30px;
+    width: 20%;
+    margin: 20px auto;
+}
+
+.delete-button:hover {
+    transform: scale(1.01);
+    transition: 150ms;
+    background-color: red;
+    color: white;
+    box-shadow: 0px 0px 15px 0px white;
+    cursor: pointer;
 }
