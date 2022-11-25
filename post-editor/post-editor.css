@@ -27,7 +27,7 @@
 
 .post-editor-page {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 35% 65%;
 }
 
 /* admin */
@@ -61,6 +61,7 @@
     /* background-color: white; */
     padding: 20px;
     margin: 0px;
+    /* display: inline; */
 }
 
 .check-box {
@@ -104,6 +105,7 @@
 .post-detail {
     width: 125px;
     font-weight: bold;
+    margin: 0px 20px 10px 0px;
 }
 
 .edit:hover {
@@ -124,7 +126,7 @@
     height: 70%;
 }
 .bigger {
-    font-size: 2em;
+    font-size: 1.75em;
 }
 .reset-button {
     font-size: 0.75rem;
@@ -140,11 +142,26 @@
     transform: scale(0.97);
 }
 .admin-titles {
-    padding-left: 20px;
+    padding-left: 30%;
 }
 .admin-titles2 {
-    padding-left: 8px;
+    padding-left: 5%;
 }
 .admin-titles3 {
     margin-left: 20%;
+}
+.bold {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.item-link {
+    text-decoration: none;
+    font-weight: bold;
+    transition: 250ms;
+    color: black;
+}
+.item-link:hover {
+    font-size: 1.05em;
+    transition: 250ms;
+    text-shadow: 0px 0px 10px rgb(82, 166, 255);
 }

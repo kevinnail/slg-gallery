@@ -88,15 +88,20 @@ export function renderItem(item, items, delItems) {
     img.src = item.image_url;
     img.classList.add('admin-preview');
 
+    const a = document.createElement('a');
+    a.href = `/post/?id=${item.id}`;
+    a.classList.add('item-link');
+
     const p = document.createElement('p');
     p.textContent = item.title;
     p.classList.add('admin-p');
+    a.append(p);
 
     const p2 = document.createElement('p');
     p2.textContent = `$${item.price}`;
     p2.classList.add('admin-p');
 
     // li.append(input, img, p);
-    li.append(input, img, p, p2);
+    li.append(input, img, a, p2);
     return li;
 }
