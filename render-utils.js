@@ -12,10 +12,6 @@ export function renderPost(post) {
     h3.textContent = post.title;
     h3.classList.add('heading');
 
-    // const h32 = document.createElement('h5');
-    // h32.textContent = categoryEmoji(post.category);
-    // h32.classList.add('category');
-
     const img = document.createElement('img');
     img.classList.add('image-size');
     img.src = post.image_url;
@@ -24,7 +20,6 @@ export function renderPost(post) {
     post.description = truncateString(post.description, 90);
     p.textContent = post.description;
 
-    // li.append(h3, img, h32, p);
     li.append(h3, img, p);
     return li;
 }
@@ -101,7 +96,6 @@ export function renderItem(item, items, delItems) {
     p2.textContent = `$${item.price}`;
     p2.classList.add('admin-p');
 
-    // li.append(input, img, p);
     li.append(input, img, a, p2);
     return li;
 }

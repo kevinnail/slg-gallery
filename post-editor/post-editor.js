@@ -29,17 +29,14 @@ const editTitle = document.getElementById('edit-title');
 const editPrice = document.getElementById('edit-price');
 const editDescription = document.getElementById('edit-description');
 const formReset = document.getElementById('form-reset');
-// const input = document.createElement('input');
 
 /* State */
 
 let error = null;
 let files = [];
 let data = [];
-// let posts = [];
 let items = [];
 let delItems = [];
-// let post = null;
 let postUpdate = null;
 
 /* Events */
@@ -125,14 +122,6 @@ editPostBtn.addEventListener('click', async () => {
         renderItem(item, items, delItems);
     }
 
-    // this isn't working because delItems[0] is a new value maybe?  needs fixing
-    // if (delItems[0]) {
-    //     postUpdate = delItems[0];
-    //     console.log('delItems[0]', delItems[0]);
-    // } else {
-    //     postUpdate = delItems[1];
-    //     console.log('firing with 1- should be after delete');
-    // }
     if (!delItems[1]) {
         postUpdate = delItems[0];
     } else {
@@ -160,9 +149,6 @@ deletePostBtn.addEventListener('click', async () => {
     editTitle.value = '';
     editPrice.value = '';
     editDescription.value = '';
-    // console.log('items', items);
-
-    // location.replace('/post-editor');
 });
 
 formReset.addEventListener('click', () => {

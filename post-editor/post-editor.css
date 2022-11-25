@@ -54,14 +54,10 @@
 }
 
 .admin-p {
-    /* border: 1px solid var(--placeholder-color); */
     position: relative;
-    /* top: -24px; */
     display: inline;
-    /* background-color: white; */
     padding: 20px;
     margin: 0px;
-    /* display: inline; */
 }
 
 .check-box {
