@@ -15,21 +15,34 @@ const previewList = document.getElementById('preview-list');
 const itemList = document.getElementById('item-list');
 const deletePostBtn = document.getElementById('delete-post-button');
 
+const input = document.createElement('input');
+
 /* State */
 
 let error = null;
 let files = [];
 let data = [];
-
+let posts = [];
+let items = [];
+let delItems = [];
 /* Events */
 
 window.addEventListener('load', async () => {
-    const items = await getPosts();
+    // const items = await getPosts();
+    items = await getPosts();
     data = items.data;
     for (const item of data) {
-        const postEl = renderItem(item);
+        // input.type = 'checkbox';
+        // input.classList.add('check-box');
+        // input.addEventListener('click', () => {
+        //     posts.push(item);
+        //     console.log('item.id', item);
+        //     itemList.append(input);
+        // });
+        const postEl = renderItem(item, items, delItems);
         itemList.append(postEl);
     }
+    console.log('delItems on load', delItems);
 });
 
 imageInput.addEventListener('change', () => {
@@ -86,9 +99,24 @@ postForm.addEventListener('submit', async (e) => {
 });
 
 deletePostBtn.addEventListener('click', async () => {
-    console.log('itemList.length: ', itemList.length);
+    // for (const item of posts) {
+    // }
+    // console.log('itemlist', itemList);
+
+    console.log('delItems in delete event', delItems);
+    // const x = removeDuplicates(delItems);
+    // console.log('delItems after duplicate removal', x);
 });
 
+// function removeDuplicates(arr) {
+//     var unique = [];
+//     arr.forEach((element) => {
+//         if (!unique.includes(element)) {
+//             unique.push(element);
+//         }
+//     });
+//     return unique;
+// }
 /* Display Functions */
 
 function displayError() {

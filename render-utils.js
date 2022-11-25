@@ -64,14 +64,41 @@ export function renderPreviews(file) {
     return li;
 }
 
-export function renderItem(item) {
+export function renderItem(item, items, delItems) {
+    const data = items.data;
     const li = document.createElement('li');
+    li.id = item.id;
 
     const input = document.createElement('input');
     input.type = 'checkbox';
     input.classList.add('check-box');
     input.addEventListener('click', () => {
-        alert('You have selected post ' + item.id + ' titled ' + item.title + ' for deletion!');
+        console.log('li.id: ', li.id);
+
+        for (let i = 0; i < items.data.length; i++) {
+            // console.log('firing... item.id: ', item.id);
+            // console.log('firing... items.data[i].id: ', data[i].id);
+            // console.log('firing... i: ', i);
+            console.log('hello another i in the for loop:', i);
+
+            if (item.id === data[i].id) {
+                // console.log('ids matched: ', item.id);
+                // console.log('!delItems.includes(item.id', `${!delItems.includes(item.id)}`);
+
+                if (delItems.includes(item.id)) {
+                    // console.log('delItems does NOT include item.id', delItems.includes(item.id));
+                    delItems.splice(delItems.indexOf(item.id), 1);
+                    console.log('includes item.id...', item.id);
+                    console.log('delItems after splice...', delItems);
+                } else {
+                    // console.log('data before splice', data);
+                    console.log('ELSE... so delItems.push(item.id here)...', item.id);
+                    delItems.push(item.id);
+                    console.log('delItems after push', delItems);
+                }
+                // console.log('data after splice', data);
+            }
+        }
     });
 
     const img = document.createElement('img');
@@ -82,6 +109,7 @@ export function renderItem(item) {
     p.textContent = item.title;
     p.classList.add('admin-p');
 
+    // li.append(input, img, p);
     li.append(input, img, p);
     return li;
 }
