@@ -103,3 +103,6 @@
     position: relative;
     top: -20px;
 }
+.left-corners {
+    border-radius: 0.5em;
+}

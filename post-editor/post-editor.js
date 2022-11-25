@@ -28,7 +28,7 @@ const editCat = document.getElementById('edit-cat');
 const editTitle = document.getElementById('edit-title');
 const editPrice = document.getElementById('edit-price');
 const editDescription = document.getElementById('edit-description');
-
+const formReset = document.getElementById('form-reset');
 // const input = document.createElement('input');
 
 /* State */
@@ -41,6 +41,7 @@ let items = [];
 let delItems = [];
 // let post = null;
 let postUpdate = null;
+
 /* Events */
 
 window.addEventListener('load', async () => {
@@ -162,6 +163,13 @@ deletePostBtn.addEventListener('click', async () => {
     // console.log('items', items);
 
     // location.replace('/post-editor');
+});
+
+formReset.addEventListener('click', () => {
+    editCat.value = null;
+    editTitle.value = '';
+    editPrice.value = '';
+    editDescription.value = '';
 });
 
 function displayError() {
