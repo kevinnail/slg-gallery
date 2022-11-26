@@ -23,6 +23,10 @@ const previewList = document.getElementById('preview-list');
 const itemList = document.getElementById('item-list');
 const deletePostBtn = document.getElementById('delete-post-button');
 const editPostBtn = document.getElementById('edit-post-button');
+const createPostBtn = document.getElementById('create-post-button');
+
+const postDetails = document.getElementById('post-details');
+const createUpdatePost = document.getElementById('create-update-post');
 
 const editCat = document.getElementById('edit-cat');
 const editTitle = document.getElementById('edit-title');
@@ -134,6 +138,9 @@ editPostBtn.addEventListener('click', async () => {
     editTitle.value = tempPost.data.title;
     editPrice.value = tempPost.data.price;
     editDescription.value = tempPost.data.description;
+
+    postDetails.classList.add('hide');
+    createUpdatePost.classList.remove('hide');
 });
 
 deletePostBtn.addEventListener('click', async () => {
@@ -157,6 +164,15 @@ formReset.addEventListener('click', () => {
     editPrice.value = '';
     editDescription.value = '';
 });
+
+createPostBtn.addEventListener('click', () => {
+    //     const postDetails = document.getElementById('post-details');
+    // const createUpdatePost = document.getElementById('create-update-post');
+    postDetails.classList.add('hide');
+    createUpdatePost.classList.remove('hide');
+});
+
+//  Display functions
 
 function displayError() {
     if (error) {

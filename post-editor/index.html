@@ -46,12 +46,15 @@
             >
             <p class="title">Admin</p>
             <nav>
+                <nav id="post-editor-link">
+                    <a href="/post-editor">Admin</a>
+                </nav>
                 <a href="/">Home</a>
                 <a id="sign-out-link" href="/auth">Sign Out</a>
             </nav>
         </header>
         <main class="post-editor-page">
-            <section>
+            <section id="create-update-post" class="hide">
                 <form id="post-form">
                     <h1 class="heading">Create/ Edit Posts</h1>
                     <label>
@@ -125,10 +128,13 @@
                     <p id="error-display"></p>
                 </form>
             </section>
-            <section class="admin-post-list">
+            <section id="post-details" class="admin-post-list">
                 <h1 class="heading up">Post Details</h1>
 
-                <button id="edit-post-button" class="delete-button post-detail edit">
+                <button id="create-post-button" class="delete-button post-detail edit1">
+                    Create Post
+                </button>
+                <button id="edit-post-button" class="delete-button post-detail edit2">
                     Edit Selected
                 </button>
                 <button id="delete-post-button" class="delete-button post-detail">
