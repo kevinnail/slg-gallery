@@ -61,6 +61,14 @@
     margin: 0px;
 }
 
+.admin-p2 {
+    position: relative;
+    display: inline;
+    padding-right: 60%;
+    margin: 0px;
+    text-align: end;
+}
+
 .check-box {
     margin: 23px;
 }
