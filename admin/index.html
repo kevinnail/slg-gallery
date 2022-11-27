@@ -123,8 +123,14 @@
                     <ul id="preview-list" class="preview-list"></ul>
 
                     <button id="add-button" class="left-corners bigger">Add or Update Post</button>
-                    <button id="form-reset" class="left-corners smaller">Form Reset</button>
-
+                    <div class="btn-container">
+                        <button id="form-reset" class="left-corners smaller inline">
+                            Form Reset
+                        </button>
+                        <button id="cancel-button" class="left-corners smaller inline">
+                            Cancel
+                        </button>
+                    </div>
                     <p id="error-display"></p>
                 </form>
             </section>
@@ -181,7 +187,8 @@
                 </div>
                 <ul id="item-list" class="item-list">
                     <li>
-                        <p class="admin-titles bold">Select</p>
+                        <!-- <p class="admin-titles bold">Select</p> -->
+                        <input id="check-box" type="checkbox" class="check-box" />
                         <p class="admin-titles2 bold">Image</p>
                         <p class="admin-titles3 bold">Title</p>
                         <p class="admin-titles4 bold">Price</p>

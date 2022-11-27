@@ -34,6 +34,9 @@ const editPrice = document.getElementById('edit-price');
 const editDescription = document.getElementById('edit-description');
 const formReset = document.getElementById('form-reset');
 
+const cancelBtn = document.getElementById('cancel-button');
+
+const checkBox = document.getElementById('check-box');
 /* State */
 
 let error = null;
@@ -48,6 +51,7 @@ let postUpdate = null;
 window.addEventListener('load', async () => {
     items = await getPosts();
     data = items.data;
+
     for (const item of data) {
         const postEl = renderItem(item, items, delItems);
         itemList.append(postEl);
@@ -182,6 +186,30 @@ createPostBtn.addEventListener('click', () => {
     createUpdatePost.classList.remove('hide');
 });
 
+cancelBtn.addEventListener('click', () => {
+    location.assign('/admin');
+});
+
+checkBox.addEventListener('change', async () => {
+    console.log('checkBox.checked', checkBox.checked);
+
+    if (checkBox.checked) {
+        itemList.innerHTML = '';
+        const li = displayHeader();
+        itemList.append(li);
+        items = await getPosts();
+        data = items.data;
+
+        for (const item of data) {
+            const postEl = renderItem(item, items, delItems, true);
+            itemList.append(postEl);
+        }
+        console.log('checkbox checked');
+    } else {
+        console.log('checkbox not checked');
+    }
+});
+
 //  Display functions
 
 function displayError() {
@@ -190,4 +218,32 @@ function displayError() {
     } else {
         errorDisplay.textContent = '';
     }
+}
+
+function displayHeader() {
+    const li = document.createElement('li');
+
+    const input = document.createElement('input');
+    input.id = 'check-box';
+    input.type = 'checkbox';
+    input.checked = true;
+    input.classList.add('check-box');
+
+    const p = document.createElement('p');
+    p.classList.add('admin-titles2');
+    p.classList.add('bold');
+    p.textContent = 'Image';
+    const p2 = document.createElement('p');
+    p2.classList.add('admin-titles2');
+    p2.classList.add('bold');
+
+    p2.textContent = 'Title';
+    const p3 = document.createElement('p');
+    p3.classList.add('admin-titles2');
+    p3.classList.add('bold');
+
+    p3.textContent = 'Price';
+
+    li.append(input, p, p2, p3);
+    return li;
 }

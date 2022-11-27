@@ -59,7 +59,7 @@ export function renderPreviews(file) {
     return li;
 }
 
-export function renderItem(item, items, delItems) {
+export function renderItem(item, items, delItems, checked) {
     const data = items.data;
     const li = document.createElement('li');
     li.id = item.id;
@@ -67,6 +67,10 @@ export function renderItem(item, items, delItems) {
     const input = document.createElement('input');
     input.type = 'checkbox';
     input.classList.add('check-box');
+    if (checked) {
+        input.checked = true;
+    }
+
     input.addEventListener('click', () => {
         for (let i = 0; i < items.data.length; i++) {
             if (item.id === data[i].id) {
