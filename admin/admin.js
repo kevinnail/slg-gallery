@@ -97,7 +97,7 @@ postForm.addEventListener('submit', async (e) => {
             price: formData.get('price'),
         };
         await updatePost(post);
-        location.assign('/post-editor');
+        location.assign('/admin');
     } else {
         const post = {
             category: formData.get('category'),
@@ -114,7 +114,7 @@ postForm.addEventListener('submit', async (e) => {
         if (error) {
             displayError();
         } else {
-            location.assign('/post-editor');
+            location.assign('/admin');
         }
     }
 });

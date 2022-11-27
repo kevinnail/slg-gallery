@@ -67,7 +67,7 @@ authForm.addEventListener('submit', async (e) => {
         // go back to wherever user came from...
         // check the query params for a redirect Url (page before auth redirect)
         const params = new URLSearchParams(location.search);
-        const redirectUrl = params.get('redirectUrl') || '/post-editor';
+        const redirectUrl = params.get('redirectUrl') || '/admin';
         location.replace(redirectUrl);
     }
 });
