@@ -32,7 +32,9 @@
 /* admin */
 .item-list {
     display: grid;
-    gap: 8px;
+    gap: 3px;
+    background-color: black;
+    padding: 10px;
 }
 
 .item-list li {
@@ -89,7 +91,7 @@
 .admin-post-list {
     display: grid;
     grid-template-columns: 15% 85%;
-    padding: 40px;
+    padding: 3% 4% 3% 3%;
     background-image: linear-gradient(rgba(0, 0, 0, 1), white, white, rgba(0, 0, 0, 1));
     gap: 20px;
     border-top: 1px solid rgb(132, 132, 132);
@@ -125,16 +127,39 @@
 .post-detail {
     width: 125px;
     font-weight: bold;
-    margin: 0px 20px 10px 0px;
+    /* margin: 0px 0px 10px 20px; */
+    width: 100%;
+    padding: 10px 0px 10px 20px;
+}
+
+.edit1,
+.edit2,
+.edit3 {
+    border-top: 1px solid beige;
+    border-bottom: 1px solid beige;
 }
 
 .edit1:hover {
-    background-color: rgb(176, 255, 196);
+    background-color: rgb(97, 197, 114);
     color: black;
+    cursor: pointer;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
+
 .edit2:hover {
     background-color: rgb(255, 255, 99);
     color: black;
+    cursor: pointer;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.edit3:hover {
+    background-color: red;
+    color: black;
+    cursor: pointer;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .up {
@@ -209,7 +234,11 @@
     font-weight: bold;
     padding: 10px 15px;
     font-size: 0.9em;
+    border-top: 1px solid beige;
+    border-bottom: 1px solid beige;
 }
 .nav-links:hover {
     background-color: rgb(157, 211, 255);
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }

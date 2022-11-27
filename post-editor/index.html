@@ -122,8 +122,8 @@
 
                     <ul id="preview-list" class="preview-list"></ul>
 
-                    <button id="form-reset" class="left-corners smaller">Form Reset</button>
                     <button id="add-button" class="left-corners bigger">Add or Update Post</button>
+                    <button id="form-reset" class="left-corners smaller">Form Reset</button>
 
                     <p id="error-display"></p>
                 </form>
@@ -134,15 +134,27 @@
                     <div>
                         <nav class="admin-panel">
                             <h1><u>Admin Panel</u></h1>
-                            <button id="create-post-button" class="delete-button post-detail edit1">
+                            <a
+                                id="create-post-button"
+                                class="post-detail edit1"
+                                title="Create a new post"
+                            >
                                 Create Post
-                            </button>
-                            <button id="edit-post-button" class="delete-button post-detail edit2">
+                            </a>
+                            <a
+                                id="edit-post-button"
+                                class="post-detail edit2"
+                                title="Edit single post selected from list"
+                            >
                                 Edit Selected
-                            </button>
-                            <button id="delete-post-button" class="delete-button post-detail">
+                            </a>
+                            <a
+                                id="delete-post-button"
+                                class="post-detail edit3"
+                                title="Delete single or multiple posts selected from list"
+                            >
                                 Delete Selected
-                            </button>
+                            </a>
                         </nav>
                     </div>
 
@@ -167,7 +179,7 @@
                         </nav>
                     </div>
                 </div>
-                <ul id="item-list" class="item-list" style="background-color: black; padding: 10px">
+                <ul id="item-list" class="item-list">
                     <li>
                         <p class="admin-titles bold">Select</p>
                         <p class="admin-titles2 bold">Image</p>

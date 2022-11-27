@@ -144,6 +144,16 @@ editPostBtn.addEventListener('click', async () => {
 });
 
 deletePostBtn.addEventListener('click', async () => {
+    const confirmX = confirm('Are you SURE you want to delete the selected posts?');
+    if (confirmX) {
+        await deleteForReal();
+        return true;
+    } else {
+        return false;
+    }
+});
+
+async function deleteForReal() {
     itemList.innerHTML = '';
     await deletePostById(delItems);
     items = await getPosts();
@@ -156,7 +166,7 @@ deletePostBtn.addEventListener('click', async () => {
     editTitle.value = '';
     editPrice.value = '';
     editDescription.value = '';
-});
+}
 
 formReset.addEventListener('click', () => {
     editCat.value = null;
