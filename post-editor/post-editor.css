@@ -38,7 +38,7 @@
 
 .item-list li {
     display: grid;
-    grid-template-columns: 1fr 1fr 4fr 1fr;
+    grid-template-columns: 0.5fr 1fr 4.5fr 1fr;
     align-items: center;
     grid-template-rows: 1fr;
     background-color: rgb(227, 227, 227);
@@ -182,7 +182,7 @@
 }
 .bold {
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 0.9em;
     text-decoration: underline;
 }
 .item-link {
@@ -209,6 +209,7 @@
     text-decoration: none;
     font-weight: bold;
     padding: 10px 15px;
+    font-size: 0.9em;
 }
 .nav-links:hover {
     background-color: rgb(157, 211, 255);
