@@ -45,12 +45,13 @@ let data = [];
 let items = [];
 let delItems = [];
 let postUpdate = null;
+let inputBoxes = [];
 
 /* Events */
 
 window.addEventListener('load', async () => {
-    const li = displayHeader();
-    itemList.append(li);
+    // const li = displayHeader();
+    // itemList.append(li);
     items = await getPosts();
     data = items.data;
 
@@ -161,6 +162,7 @@ deletePostBtn.addEventListener('click', async () => {
 
 async function deleteForReal() {
     itemList.innerHTML = '';
+
     await deletePostById(delItems);
     items = await getPosts();
     data = items.data;
@@ -168,6 +170,7 @@ async function deleteForReal() {
         const postEl = renderItem(item, items, delItems);
         itemList.append(postEl);
     }
+    checkBox.checked = false;
     editCat.value = null;
     editTitle.value = '';
     editPrice.value = '';
@@ -192,25 +195,39 @@ cancelBtn.addEventListener('click', () => {
     location.assign('/admin');
 });
 
-// checkBox.addEventListener('change', async () => {
-//     console.log('checkBox.checked from original event listener', checkBox.checked);
+checkBox.addEventListener('change', async () => {
+    const data = items.data;
 
-//     if (checkBox.checked) {
-//         itemList.innerHTML = '';
-//         const li = displayHeader();
-//         itemList.append(li);
-//         items = await getPosts();
-//         data = items.data;
+    if (delItems.length === 0) {
+        for (const item of data) {
+            delItems.push(item.id);
+        }
+    } else {
+        delItems = [];
+    }
 
-//         for (const item of data) {
-//             const postEl = renderItem(item, items, delItems, true);
-//             itemList.append(postEl);
-//         }
-//         // console.log('checkbox checked');
-//     } else {
-//         // console.log('checkbox not checked');
-//     }
-// });
+    // for (let i = 0; i < items.data.length; i++) {
+    //     if (item.id === data[i].id) {
+    //         if (delItems.includes(item.id)) {
+    //             delItems.splice(delItems.indexOf(item.id), 1);
+    //         } else {
+    //             delItems.push(item.id);
+    //         }
+    //     }
+    // }
+    if (checkBox.checked) {
+        inputBoxes = document.querySelectorAll('input');
+        for (const inputBox of inputBoxes) {
+            inputBox.checked = true;
+        }
+    } else {
+        inputBoxes = document.querySelectorAll('input');
+        for (const inputBox of inputBoxes) {
+            inputBox.checked = false;
+            checkBox.checked = false;
+        }
+    }
+});
 
 //  Display functions
 
@@ -222,55 +239,55 @@ function displayError() {
     }
 }
 
-let checkedB = true;
+// let checkedB = true;
 
-function displayHeader() {
-    const li = document.createElement('li');
-    const input = document.createElement('input');
+// function displayHeader() {
+//     const li = document.createElement('li');
+//     const input = document.createElement('input');
 
-    input.checked = false;
+//     input.checked = false;
 
-    input.id = 'check-box';
-    input.type = 'checkbox';
-    if (checkedB) {
-        input.value = false;
-        checkedB = false;
-    } else {
-        input.checked = true;
-        checkedB = true;
-    }
-    input.classList.add('check-box');
+//     input.id = 'check-box';
+//     input.type = 'checkbox';
+//     if (checkedB) {
+//         input.value = false;
+//         checkedB = false;
+//     } else {
+//         input.checked = true;
+//         checkedB = true;
+//     }
+//     input.classList.add('check-box');
 
-    input.addEventListener('click', async () => {
-        // input.checked = false;
-        itemList.innerHTML = '';
-        const li = displayHeader();
-        itemList.append(li);
-        items = await getPosts();
-        data = items.data;
+//     input.addEventListener('click', async () => {
+//         // input.checked = false;
+//         itemList.innerHTML = '';
+//         const li = displayHeader();
+//         itemList.append(li);
+//         items = await getPosts();
+//         data = items.data;
 
-        for (const item of data) {
-            const postEl = renderItem(item, items, delItems, checkedB);
-            itemList.append(postEl);
-        }
-        // displayHeader();
-    });
+//         for (const item of data) {
+//             const postEl = renderItem(item, items, delItems, checkedB);
+//             itemList.append(postEl);
+//         }
+//         // displayHeader();
+//     });
 
-    const p = document.createElement('p');
-    p.classList.add('admin-titles2');
-    p.classList.add('bold');
-    p.textContent = 'Image';
-    const p2 = document.createElement('p');
-    p2.classList.add('admin-titles2');
-    p2.classList.add('bold');
+//     const p = document.createElement('p');
+//     p.classList.add('admin-titles2');
+//     p.classList.add('bold');
+//     p.textContent = 'Image';
+//     const p2 = document.createElement('p');
+//     p2.classList.add('admin-titles2');
+//     p2.classList.add('bold');
 
-    p2.textContent = 'Title';
-    const p3 = document.createElement('p');
-    p3.classList.add('admin-titles2');
-    p3.classList.add('bold');
+//     p2.textContent = 'Title';
+//     const p3 = document.createElement('p');
+//     p3.classList.add('admin-titles2');
+//     p3.classList.add('bold');
 
-    p3.textContent = 'Price';
+//     p3.textContent = 'Price';
 
-    li.append(input, p, p2, p3);
-    return li;
-}
+//     li.append(input, p, p2, p3);
+//     return li;
+// }
