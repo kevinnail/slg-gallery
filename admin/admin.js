@@ -50,8 +50,6 @@ let inputBoxes = [];
 /* Events */
 
 window.addEventListener('load', async () => {
-    // const li = displayHeader();
-    // itemList.append(li);
     items = await getPosts();
     data = items.data;
 
@@ -185,8 +183,6 @@ formReset.addEventListener('click', () => {
 });
 
 createPostBtn.addEventListener('click', () => {
-    //     const postDetails = document.getElementById('post-details');
-    // const createUpdatePost = document.getElementById('create-update-post');
     postDetails.classList.add('hide');
     createUpdatePost.classList.remove('hide');
 });
@@ -206,15 +202,6 @@ checkBox.addEventListener('change', async () => {
         delItems = [];
     }
 
-    // for (let i = 0; i < items.data.length; i++) {
-    //     if (item.id === data[i].id) {
-    //         if (delItems.includes(item.id)) {
-    //             delItems.splice(delItems.indexOf(item.id), 1);
-    //         } else {
-    //             delItems.push(item.id);
-    //         }
-    //     }
-    // }
     if (checkBox.checked) {
         inputBoxes = document.querySelectorAll('input');
         for (const inputBox of inputBoxes) {
@@ -238,56 +225,3 @@ function displayError() {
         errorDisplay.textContent = '';
     }
 }
-
-// let checkedB = true;
-
-// function displayHeader() {
-//     const li = document.createElement('li');
-//     const input = document.createElement('input');
-
-//     input.checked = false;
-
-//     input.id = 'check-box';
-//     input.type = 'checkbox';
-//     if (checkedB) {
-//         input.value = false;
-//         checkedB = false;
-//     } else {
-//         input.checked = true;
-//         checkedB = true;
-//     }
-//     input.classList.add('check-box');
-
-//     input.addEventListener('click', async () => {
-//         // input.checked = false;
-//         itemList.innerHTML = '';
-//         const li = displayHeader();
-//         itemList.append(li);
-//         items = await getPosts();
-//         data = items.data;
-
-//         for (const item of data) {
-//             const postEl = renderItem(item, items, delItems, checkedB);
-//             itemList.append(postEl);
-//         }
-//         // displayHeader();
-//     });
-
-//     const p = document.createElement('p');
-//     p.classList.add('admin-titles2');
-//     p.classList.add('bold');
-//     p.textContent = 'Image';
-//     const p2 = document.createElement('p');
-//     p2.classList.add('admin-titles2');
-//     p2.classList.add('bold');
-
-//     p2.textContent = 'Title';
-//     const p3 = document.createElement('p');
-//     p3.classList.add('admin-titles2');
-//     p3.classList.add('bold');
-
-//     p3.textContent = 'Price';
-
-//     li.append(input, p, p2, p3);
-//     return li;
-// }
