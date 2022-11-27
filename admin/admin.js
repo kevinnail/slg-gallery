@@ -125,11 +125,18 @@ postForm.addEventListener('submit', async (e) => {
 });
 
 editPostBtn.addEventListener('click', async () => {
-    items = await getPosts();
-    data = items.data;
-    for (const item of data) {
-        renderItem(item, items, delItems);
+    if (delItems.length > 1) {
+        alert('Please select only one post to edit');
+        return;
     }
+
+    // Not sure if this needs to be here??? vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+    // items = await getPosts();
+    // data = items.data;
+    // for (const item of data) {
+    //     renderItem(item, items, delItems);
+    // }
 
     if (!delItems[1]) {
         postUpdate = delItems[0];
