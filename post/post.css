@@ -113,6 +113,18 @@ main {
     width: 80%;
     min-width: 100px;
 }
+.description2 {
+    color: white;
+    background-color: rgba(0, 43, 100, 1);
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px white;
+    text-align: center;
+    width: 30%;
+    min-width: 100px;
+}
 
 .delete-cmt-btn {
     display: inline-block;
@@ -174,15 +186,22 @@ main {
     text-shadow: 0px 0px 5px white;
     display: inline-block;
 }
+#category {
+    transition: 400ms;
+}
 
 #category:hover {
     cursor: pointer;
-    background-color: rgb(201, 255, 203);
-    color: black;
-    transition: 500ms;
+    background-color: rgba(0, 43, 100, 1);
+    color: white;
+    transition: 400ms;
     box-shadow: 0px 0px 30px 0px rgb(255, 255, 255);
+    transform: scale(1.05);
 }
-
+#category:active {
+    transition: 400ms;
+    transform: scale(1);
+}
 .post-delete-button {
     width: 70px;
     margin: auto;
@@ -224,8 +243,9 @@ main {
 }
 
 .cat-btn {
-    border-radius: 1em;
-    background-color: white;
+    border-radius: 0.5em;
+    background-color: rgb(214, 212, 212);
+
     color: black;
     margin: auto auto;
 }

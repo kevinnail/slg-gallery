@@ -25,10 +25,9 @@
     border: 2px solid rgb(0, 0, 0);
 }
 
-/* .post-editor-page { 
-     display: grid;
-    grid-template-columns: 35% 65%; 
- } */
+.post-editor-page {
+    margin: 0% 10%;
+}
 
 /* admin */
 .item-list {

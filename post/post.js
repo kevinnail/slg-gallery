@@ -45,7 +45,7 @@ function displayPost() {
     postTitle.textContent = post.title;
     postCategory.textContent = post.category;
     postDescription.textContent = post.description;
-    postPrice.innerHTML = `Price (shipping included): $${post.price}`;
+    postPrice.innerHTML = `$${post.price}`;
     for (let i = 0; i < urls.data.length; i++) {
         const imgs = document.createElement('img');
         imgs.classList.add('post-gallery-pics');
