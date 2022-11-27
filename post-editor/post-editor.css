@@ -69,11 +69,24 @@
     text-align: end;
 }
 
+.admin-panel {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    height: 100%;
+}
+
 .check-box {
     margin: 23px;
 }
 
 .admin-post-list {
+    display: grid;
+    grid-template-columns: 15% 85%;
     padding: 40px;
     background-image: linear-gradient(rgba(0, 0, 0, 1), white, white, rgba(0, 0, 0, 1));
     gap: 20px;
@@ -125,6 +138,8 @@
 .up {
     position: relative;
     top: -20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 .left-corners {
     border-radius: 0.5em;
@@ -164,7 +179,7 @@
 }
 .bold {
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.2em;
     text-decoration: underline;
 }
 .item-link {
