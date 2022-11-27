@@ -49,6 +49,8 @@ let postUpdate = null;
 /* Events */
 
 window.addEventListener('load', async () => {
+    const li = displayHeader();
+    itemList.append(li);
     items = await getPosts();
     data = items.data;
 
@@ -190,25 +192,25 @@ cancelBtn.addEventListener('click', () => {
     location.assign('/admin');
 });
 
-checkBox.addEventListener('change', async () => {
-    console.log('checkBox.checked', checkBox.checked);
+// checkBox.addEventListener('change', async () => {
+//     console.log('checkBox.checked from original event listener', checkBox.checked);
 
-    if (checkBox.checked) {
-        itemList.innerHTML = '';
-        const li = displayHeader();
-        itemList.append(li);
-        items = await getPosts();
-        data = items.data;
+//     if (checkBox.checked) {
+//         itemList.innerHTML = '';
+//         const li = displayHeader();
+//         itemList.append(li);
+//         items = await getPosts();
+//         data = items.data;
 
-        for (const item of data) {
-            const postEl = renderItem(item, items, delItems, true);
-            itemList.append(postEl);
-        }
-        console.log('checkbox checked');
-    } else {
-        console.log('checkbox not checked');
-    }
-});
+//         for (const item of data) {
+//             const postEl = renderItem(item, items, delItems, true);
+//             itemList.append(postEl);
+//         }
+//         // console.log('checkbox checked');
+//     } else {
+//         // console.log('checkbox not checked');
+//     }
+// });
 
 //  Display functions
 
@@ -220,14 +222,39 @@ function displayError() {
     }
 }
 
+let checkedB = true;
+
 function displayHeader() {
     const li = document.createElement('li');
-
     const input = document.createElement('input');
+
+    input.checked = false;
+
     input.id = 'check-box';
     input.type = 'checkbox';
-    input.checked = true;
+    if (checkedB) {
+        input.value = false;
+        checkedB = false;
+    } else {
+        input.checked = true;
+        checkedB = true;
+    }
     input.classList.add('check-box');
+
+    input.addEventListener('click', async () => {
+        // input.checked = false;
+        itemList.innerHTML = '';
+        const li = displayHeader();
+        itemList.append(li);
+        items = await getPosts();
+        data = items.data;
+
+        for (const item of data) {
+            const postEl = renderItem(item, items, delItems, checkedB);
+            itemList.append(postEl);
+        }
+        // displayHeader();
+    });
 
     const p = document.createElement('p');
     p.classList.add('admin-titles2');
