@@ -73,14 +73,20 @@ export function renderItem(item, items, delItems, checked) {
 
     input.addEventListener('click', () => {
         for (let i = 0; i < items.data.length; i++) {
-            if (item.id === data[i].id) {
+            console.log('data ', data);
+            console.log('item ', item);
+            if (item.id !== data[i].id) {
                 if (delItems.includes(item.id)) {
+                    // console.log('before splice item.id=data[i]id', delItems.length);
                     delItems.splice(delItems.indexOf(item.id), 1);
+                    // console.log('after splice item.id=data[i]id', delItems.length);
                 } else {
                     delItems.push(item.id);
+                    // console.log('hi if else... ', delItems);
                 }
             }
         }
+        console.log('delItems at END of li event listeners', delItems);
     });
 
     const img = document.createElement('img');

@@ -37,6 +37,14 @@ const formReset = document.getElementById('form-reset');
 const cancelBtn = document.getElementById('cancel-button');
 
 const checkBox = document.getElementById('check-box');
+//    TEMP
+const checkValue = document.getElementById('check-value');
+checkValue.addEventListener('click', () => {
+    console.log('delItems from checkValue link', delItems);
+    // delItems = ['hi'];
+});
+// TEMP
+
 /* State */
 
 let error = null;
@@ -125,6 +133,7 @@ postForm.addEventListener('submit', async (e) => {
 });
 
 editPostBtn.addEventListener('click', async () => {
+    console.log('delItems in editPostbtn event listener', delItems);
     if (delItems.length > 1) {
         alert('Please select only one post to edit');
         return;
@@ -156,6 +165,7 @@ editPostBtn.addEventListener('click', async () => {
 });
 
 deletePostBtn.addEventListener('click', async () => {
+    console.log('delItems in delete button', delItems);
     const confirmX = confirm('Are you SURE you want to delete the selected posts?');
     if (confirmX) {
         await deleteForReal();
@@ -200,27 +210,36 @@ cancelBtn.addEventListener('click', () => {
 
 checkBox.addEventListener('change', async () => {
     const data = items.data;
+    // console.log('data', data);
 
-    if (delItems.length === 0) {
-        for (const item of data) {
-            delItems.push(item.id);
-        }
-    } else {
-        delItems = [];
-    }
+    // not sure why this was here vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    // if (delItems.length === 0) {
+    //     for (const item of data) {
+    //         delItems.push(item.id);
+    //     }
+    // } else {
+    // console.log('delItems in else checkBox event (length>0)', delItems);
+    // delItems = [];
+    // }
 
     if (checkBox.checked) {
+        // checkbox is checked, select entire list
         inputBoxes = document.querySelectorAll('input');
         for (const inputBox of inputBoxes) {
             inputBox.checked = true;
         }
     } else {
+        // checkbox is unchecked, unselect entire list
         inputBoxes = document.querySelectorAll('input');
         for (const inputBox of inputBoxes) {
             inputBox.checked = false;
             checkBox.checked = false;
+            // console.log('delItems 1', delItems);
+            // delItems = [];
+            // console.log('delItems 2', delItems);
         }
     }
+    console.log('delitems at END of checkBox event', delItems);
 });
 
 //  Display functions

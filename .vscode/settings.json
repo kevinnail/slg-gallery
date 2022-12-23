@@ -1,0 +1,9 @@
+{
+    "workbench.colorCustomizations": {
+        "notifications.border": "#000000",
+        "notifications.background": "#f7d0d0",
+        "notifications.foreground": "#060505",
+        "statusBarItem.errorBackground": "#060505",
+        "notificationsInfoIcon.foreground": "#de0000"
+    }
+}
